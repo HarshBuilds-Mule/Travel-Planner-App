@@ -1,0 +1,107 @@
+#%RAML 1.0
+title: sys-geopify-m4-api
+version: v1
+description: Api to call geopify in sys layer to get map for frontend 
+
+/geopify:
+  post:
+    description: get map related data for showing in frontend
+    body:
+      application/json:
+        example:
+          {
+            "text":"Bhopal,India"
+          }
+    responses:
+        200:
+          description: "Successfully found the location."
+          body:
+            application/json:
+              example: |
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                  {
+                    "type": "Feature",
+                    "properties": {
+                        "datasource": {
+                            "sourcename": "openstreetmap",
+                            "attribution": "© OpenStreetMap contributors",
+                            "license": "Open Database License",
+                            "url": "https://www.openstreetmap.org/copyright"
+                        },
+                        "country": "Germany",
+                        "country_code": "de",
+                        "city": "Berlin",
+                        "iso3166_2": "DE-BE",
+                        "lon": 13.3989367,
+                        "lat": 52.510885,
+                        "result_type": "city",
+                        "formatted": "Berlin, Germany",
+                        "address_line1": "Berlin",
+                        "address_line2": "Germany",
+                        "category": "administrative",
+                        "timezone": {
+                            "name": "Europe/Berlin",
+                            "offset_STD": "+01:00",
+                            "offset_STD_seconds": 3600,
+                            "offset_DST": "+02:00",
+                            "offset_DST_seconds": 7200,
+                            "abbreviation_STD": "CET",
+                            "abbreviation_DST": "CEST"
+                        },
+                        "plus_code": "9F4MG96X+9H",
+                        "plus_code_short": "6X+9H Berlin, Germany",
+                        "rank": {
+                            "importance": 0.840425236063765,
+                            "popularity": 8.84398333023661,
+                            "confidence": 1,
+                            "confidence_city_level": 1,
+                            "match_type": "full_match"
+                        },
+                        "place_id": "512c595f6e41cc2a40592c82ffad64414a40f00101f901d6f3000000000000c00208"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            13.3989367,
+                            52.510885
+                        ]
+                    },
+                    "bbox": [
+                        13.088345,
+                        52.3382448,
+                        13.7611609,
+                        52.6755087
+                    ]
+                    }
+                ],
+                "query": {
+                    "text": "Berlin, Germany",
+                    "parsed": {
+                        "city": "berlin",
+                        "country": "germany",
+                        "expected_type": "city"
+                    }
+                     }
+                  }
+        404:
+          description: "The requested location could not be found."
+          body:
+            application/json:
+              example: |
+                {
+                  "error": "Not Found",
+                  "message": "No results found for the specified address."
+                }
+        401:
+          description: "API key is invalid or missing."
+          body:
+            application/json:
+              example: |
+                {
+                  "error": "Unauthorized",
+                  "message": "Invalid API key."
+                }
+    
+    

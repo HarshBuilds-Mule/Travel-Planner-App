@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd 
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+    <http:listener-config name="prc-connection-m4-api-httpListenerConfig">
+        <http:listener-connection host="${http.host}" port="${http.port}" connectionIdleTimeout="60000" readTimeout="120000"/>
+    </http:listener-config>
+    <apikit:config name="prc-connection-m4-api-config" api="prc-connection-m4-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <http:request-config name="requester-for-geopify" doc:name="HTTP Request configuration" doc:id="65cec3dc-1497-4fa5-b372-cb688214137d" basePath="/api" >
+		<http:request-connection host="${http.host}" port="${port.geopify}" />
+	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="a47f995c-b557-4685-a562-8819d53f73ca" file="config\global.properties" />
+	<http:request-config name="requester-for-openrouteservice" doc:name="HTTP Request configuration" doc:id="bc6403a9-c8ef-4a07-a58b-a19d4a6f1a8d" basePath="/api" >
+		<http:request-connection host="${http.host}" port="${port.ors}" />
+	</http:request-config>
+	<http:request-config name="requester-for-openmeteo-weatherservice" doc:name="HTTP Request configuration" doc:id="c1f37dc4-c814-47d5-80a6-733be711c768" basePath="/api" >
+		<http:request-connection host="${http.host}" port="${port.om}" />
+	</http:request-config>
+	<http:request-config name="HTTP_Request_config_for_ai" doc:name="HTTP Request config" doc:id="5708eab5-a001-429d-bedc-aac0156ea90d" basePath="/api">
+		<http:request-connection host="${http.host}" port="${port.ai}"/>
+	</http:request-config>
+	<ee:object-store-caching-strategy name="Caching_Strategy" doc:name="Caching Strategy" doc:id="c2bc1218-4dcb-42f0-be5d-be6c0c790839" keyGenerationExpression='#[attributes.headers.start default "default"]' objectStore="AI-objectstore"/>
+	<os:object-store name="AI-objectstore" doc:name="Object store" doc:id="bd7c8ae7-0336-4df8-b454-c638fc9d3e17" maxEntries="20" entryTtl="1" entryTtlUnit="HOURS" />
+	<flow name="prc-connection-m4-api-main">
+        <http:listener config-ref="prc-connection-m4-api-httpListenerConfig" path="/api/*">
+            <http:response statusCode="#[vars.httpStatus default 200]">
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:response>
+            <http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body>#[payload]</http:body>
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:error-response>
+        </http:listener>
+        <apikit:router config-ref="prc-connection-m4-api-config" />
+        <error-handler>
+            <on-error-propagate type="APIKIT:BAD_REQUEST">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Bad request"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">400</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_FOUND">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Resource not found"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">404</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:METHOD_NOT_ALLOWED">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Method not allowed"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">405</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_ACCEPTABLE">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Not acceptable"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">406</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:UNSUPPORTED_MEDIA_TYPE">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Unsupported media type"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">415</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_IMPLEMENTED">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Not Implemented"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">501</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+        </error-handler>
+    </flow>
+    <flow name="prc-connection-m4-api-console">
+        <http:listener config-ref="prc-connection-m4-api-httpListenerConfig" path="/console/*">
+            <http:response statusCode="#[vars.httpStatus default 200]">
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:response>
+            <http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body>#[payload]</http:body>
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:error-response>
+        </http:listener>
+        <apikit:console config-ref="prc-connection-m4-api-config" />
+        <error-handler>
+            <on-error-propagate type="APIKIT:NOT_FOUND">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Resource not found"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">404</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+        </error-handler>
+    </flow>
+    <flow name="post:\connection:application\json:prc-connection-m4-api-config">
+		<set-variable value="#[payload]" doc:name="vars.pay" doc:id="181bfa68-423e-4f61-8db5-55af74f99cec" variableName="pay"/>
+		<set-variable value="#[attributes.headers]" doc:name="vars.headers" doc:id="f96d35b0-8161-4f42-a991-6cdb31a9af32" variableName="headers"/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="4a2176a1-1c8f-4a73-9130-89423d44ebdb" >
+			<route >
+				<http:request method="GET" doc:name="Get Route" doc:id="11332945-8b61-4644-bc15-d63efb699a00" config-ref="requester-for-openrouteservice" path="/route" target="route">
+			<http:headers><![CDATA[#[output application/java
+---
+{
+	"transport" : vars.headers.transport,
+	"start" : vars.headers.start,
+	"end" : vars.headers.end
+}]]]></http:headers>
+		</http:request>
+				<flow-ref doc:name="Flow Reference" doc:id="a2341ee4-a3b4-4309-8c9b-9bc2c3c13386" name="prc-route-dataFlow" target="routeai"/>
+			</route>
+			<route >
+				<http:request method="POST" doc:name="Get Map" doc:id="2e22b602-bade-4da4-beef-a46cdf8f7d9e" config-ref="requester-for-geopify" path="/geopify" target="geo" />
+			</route>
+		</scatter-gather>
+		<!-- <http:request method="GET" doc:name="Request" doc:id="a1aa96e8-1e38-42dd-b7ff-545b78926e01" config-ref="requester-for-openmeteo-weatherservice" path="/meteo">
+			<http:headers ><![CDATA[#[output application/java
+-&#45;&#45;
+{
+	"longitude" : vars.l.long,
+	"latitude" : vars.l.lat
+}]]]></http:headers>
+		</http:request> -->
+		<ee:cache doc:name="Cache" doc:id="4dab6277-05c2-4162-926c-0c801ed21082" cachingStrategy-ref="Caching_Strategy">
+			<http:request doc:name="Request to ai" doc:id="86856e20-60ee-4d25-b8ed-218ea48f549a" config-ref="HTTP_Request_config_for_ai" path="/ai" method="POST" target="rai" responseTimeout="60000">
+			<http:body><![CDATA[#[{
+    "points" : vars.routeai.pointCoordinates
+}]]]></http:body>
+		</http:request>
+		</ee:cache>
+		<ee:transform doc:name="Transform Message" doc:id="223b4faa-45b2-44b1-b2ff-d543ccefb335" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+
+// 1. Capture the raw string. 
+// Note: We use 'default ""' to prevent null pointer errors if message is missing.
+var rawString = vars.rai.choices[0].message.content default "" 
+
+// 2. Parse the string into an actual Object. 
+// We read 'rawString' directly, not 'rawString[0]'.
+var parsed = read(rawString, "application/json")
+
+---
+parsed.places map (p) -> {
+    name: p.place_name,
+    // Splitting "long,lat" -> [0] is Longitude, [1] is Latitude
+    latitude: trim((p.longlat splitBy ",")[1]) as Number,
+    longitude: trim((p.longlat splitBy ",")[0]) as Number,
+    distanceFromRouteKm: p.distance_from_route_km as Number
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="307c6fa0-51a6-4b39-ade8-f56b0e3a0201" message="#[payload]"/>
+		<set-variable doc:name="Set Variable" doc:id="42d915dc-bb83-4a2e-bf3e-33ec5f044cce" variableName="weather" value="#[[]]"/>
+		<foreach doc:name="For Each" doc:id="c1b00874-4697-4d20-a0d6-fa1edf966dfd" collection="payload">
+			<http:request doc:name="Get Weather" doc:id="392de164-b3a6-4a24-a2ab-f7c020e55a3c" config-ref="requester-for-openmeteo-weatherservice" path="/meteo" method="GET">
+			<http:headers><![CDATA[#[output application/java
+---
+{
+	"latitude" : payload.latitude as String ,
+	"longitude" : payload.longitude as String
+}]]]></http:headers>
+		</http:request>
+			<ee:transform doc:name="Transform Message" doc:id="0c56f134-e4d1-46c5-8a7a-1733349caec1" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var max = payload.daily.temperature_2m_max[0]
+var min = payload.daily.temperature_2m_min[0]
+---
+{
+	"lat" : payload.latitude,
+	"long": payload.longitude,
+    "AvgTemp" : abs((max+min)/2)
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<choice doc:name="Choice" doc:id="548c9731-08d5-466e-9c1a-66bd2061c481" >
+				<when expression="#[payload.AvgTemp &gt;= 35]">
+					<ee:transform doc:name="Extreme heat" doc:id="fca60c0d-1c6e-40f1-a3ff-a3655c74744f" >
+						<ee:message >
+							<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Latitude": payload.lat,
+	"Longitude": payload.long,
+	"Message" : "Extreme heat. Stay hydrated!"
+}]]></ee:set-payload>
+						</ee:message>
+					</ee:transform>
+				</when>
+				<when expression="#[payload.AvgTemp &gt;= 28]">
+					<ee:transform doc:name="Hot day" doc:id="eb0a3622-b619-4b39-b14a-739cc2fd3761">
+						<ee:message>
+							<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Latitude": payload.lat,
+	"Longitude": payload.long,
+	"Message" : "Hot day. Wear light clothes."
+}]]></ee:set-payload>
+						</ee:message>
+					</ee:transform>
+				</when>
+				<when expression="#[payload.AvgTemp &gt;= 20]">
+					<ee:transform doc:name="Great weather" doc:id="068d7d5c-6475-4e33-a2ae-732723a67e3b">
+						<ee:message>
+							<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Latitude": payload.lat,
+	"Longitude": payload.long,
+	"Message" : "Great weather for a ride!"
+}]]></ee:set-payload>
+						</ee:message>
+					</ee:transform>
+				</when>
+				<when expression="#[payload.AvgTemp &gt;= 12]">
+					<ee:transform doc:name="bit cool" doc:id="5cbd2292-a931-47c9-ae92-acd39be2627b">
+						<ee:message>
+							<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Latitude": payload.lat,
+	"Longitude": payload.long,
+	"Message" : "A bit cool. Bring a light jacket."
+}]]></ee:set-payload>
+						</ee:message>
+					</ee:transform>
+				</when>
+				<when expression="#[payload.AvgTemp &gt;=5]">
+					<ee:transform doc:name="It's Cold" doc:id="c7bc5ed5-4b00-4097-a0a7-65e9c3e5cb3b">
+						<ee:message>
+							<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Latitude": payload.lat,
+	"Longitude": payload.long,
+	"Message" : "It's cold. Bundle up."
+	
+	}]]></ee:set-payload>
+						</ee:message>
+					</ee:transform>
+				</when>
+				<otherwise >
+					<ee:transform doc:name="Very cold" doc:id="5ddd5751-53af-4ca9-a099-3821a51f055b">
+						<ee:message>
+							<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Latitude": payload.lat,
+	"Longitude": payload.long,
+	"Message" : "Very cold. Be careful!",
+}]]></ee:set-payload>
+						</ee:message>
+					</ee:transform>
+				</otherwise>
+			</choice>
+			<set-variable value="#[output application/java&#10;---&#10;vars.weather ++ [payload]]" doc:name="vars.weather" doc:id="1bf24c17-271b-4944-8efe-f820689cbefa" variableName="weather"/>
+		</foreach>
+		<ee:transform doc:name="Transform Message" doc:id="4210c98c-c42a-4836-828a-276bbbfb56d3" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Weather" : vars.weather,
+	"Map" : vars.geo,
+	"Route": vars.route
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+    </flow>
+</mule>

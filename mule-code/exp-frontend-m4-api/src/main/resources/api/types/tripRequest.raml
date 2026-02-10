@@ -1,0 +1,42 @@
+#%RAML 1.0 DataType
+
+type: object
+properties:
+  transport:
+    type: string
+    required: true
+    minLength: 3
+    example: "driving-car"
+  start:
+    type: string
+    required: true
+    minLength: 3
+    example: "Mumbai"
+  end:
+    type: string
+    required: true
+    minLength: 3
+    example: "karanchi"
+  departure:
+    type: datetime
+    required: false
+    example: 2016-02-28T16:41:41.090Z
+  endDate:
+    type: datetime
+    required: false
+    example: 2016-03-28T16:41:41.090Z
+  points:
+    type: integer
+    required: false
+    example: 4
+  preferences:
+    type: object
+    required: false
+    properties:
+      vibe: 
+        enum: [fastest,scenic,eco-friendly]
+        example: "fastest"
+      budget:
+        enum: [low,medium,high]
+        example: "medium"
+      

@@ -1,0 +1,8 @@
+#Listener
+http.host=localhost
+http.port=8081
+
+
+#Requester
+https.host=users-mule.firebaseio.com
+https.port=443

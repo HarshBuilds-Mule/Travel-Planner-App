@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+
+type: object
+properties:
+  tripId:
+    type: string
+    example: "trip_001"
+  aiSuggestions:
+    type: string
+    example:
+      "To avoid afternoon showers near pune, I suggest leaving at 9:00AM. This will give you a scenic view of the ghats during midday."
+  routeData:
+    type: object
+    example:
+      "coordinates": [[.....],[...]]
+  weatherPoints:
+    type: object
+    properties:
+      location: string
+      condition: string
+      temperature: number

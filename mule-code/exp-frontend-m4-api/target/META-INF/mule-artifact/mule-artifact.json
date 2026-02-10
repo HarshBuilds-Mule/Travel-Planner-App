@@ -1,0 +1,33 @@
+{
+  "configs": [
+    "exp-frontend-m4-api.xml"
+  ],
+  "secureProperties": [],
+  "supportedJavaVersions": [],
+  "redeploymentEnabled": true,
+  "name": "com.mycompany:exp-frontend-m4-api:1.0.0-SNAPSHOT",
+  "minMuleVersion": "4.9.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "api/exp-frontend-m4-api.raml",
+        "api/types/errorResponse.raml",
+        "api/types/tripRequest.raml",
+        "api/types/tripResponse.raml",
+        "config/global.properties",
+        "exp-frontend-m4-api.xml",
+        "log4j2.xml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  },
+  "javaSpecificationVersions": [
+    "17"
+  ]
+}

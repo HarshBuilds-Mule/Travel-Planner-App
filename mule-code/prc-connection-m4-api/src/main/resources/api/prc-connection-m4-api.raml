@@ -1,0 +1,25 @@
+#%RAML 1.0
+title: prc-connection-m4-api
+version: v1
+description: this app is responsible for collecting data from exp layer and process by calling multiple sys apis
+
+/connection:
+  post:
+    description: receiving data from exp-frontend-m4-api
+    body:
+      application/json:
+    responses:
+      200:
+        description: successfully get the data and processeds
+        body:
+          application/json:
+            type: !include types/tripResponse.raml
+      400:
+        description: something is broken in request
+        body:
+          application/json:
+            type: object
+            properties:
+              message:
+                type: string
+                required: true
