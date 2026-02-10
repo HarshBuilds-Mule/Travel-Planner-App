@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd ">
+    <http:listener-config name="sys-openrouter-ai-m4-api-httpListenerConfig">
+        <http:listener-connection host="${http.host}" port="${http.port}" />
+    </http:listener-config>
+    <apikit:config name="sys-openrouter-ai-m4-api-config" api="sys-openrouter-ai-m4-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <configuration-properties doc:name="Configuration properties" doc:id="26861b16-63fd-4acc-a3e3-b3c375eb0441" file="config\global.properties" />
+	<http:request-config name="request-to-get-famous-places-around-route" doc:name="HTTP Request config" doc:id="b7d4e800-4c4a-4317-8348-367de6d80e0e" basePath="/api">
+		<http:request-connection protocol="HTTPS" host="${ai.host}" port="${ai.port}" />
+	</http:request-config>
+	<flow name="sys-openrouter-ai-m4-api-main">
+        <http:listener config-ref="sys-openrouter-ai-m4-api-httpListenerConfig" path="/api/*">
+            <http:response statusCode="#[vars.httpStatus default 200]">
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:response>
+            <http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body>#[payload]</http:body>
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:error-response>
+        </http:listener>
+        <apikit:router config-ref="sys-openrouter-ai-m4-api-config" />
+        <error-handler>
+            <on-error-propagate type="APIKIT:BAD_REQUEST">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Bad request"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">400</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_FOUND">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Resource not found"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">404</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:METHOD_NOT_ALLOWED">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Method not allowed"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">405</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_ACCEPTABLE">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Not acceptable"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">406</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:UNSUPPORTED_MEDIA_TYPE">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Unsupported media type"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">415</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+            <on-error-propagate type="APIKIT:NOT_IMPLEMENTED">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Not Implemented"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">501</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+        </error-handler>
+    </flow>
+    <flow name="sys-openrouter-ai-m4-api-console">
+        <http:listener config-ref="sys-openrouter-ai-m4-api-httpListenerConfig" path="/console/*">
+            <http:response statusCode="#[vars.httpStatus default 200]">
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:response>
+            <http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body>#[payload]</http:body>
+                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+            </http:error-response>
+        </http:listener>
+        <apikit:console config-ref="sys-openrouter-ai-m4-api-config" />
+        <error-handler>
+            <on-error-propagate type="APIKIT:NOT_FOUND">
+                <ee:transform doc:name="Transform Message">
+                    <ee:message>
+                        <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{message: "Resource not found"}]]></ee:set-payload>
+                    </ee:message>
+                    <ee:variables>
+                        <ee:set-variable variableName="httpStatus">404</ee:set-variable>
+                    </ee:variables>
+                </ee:transform>
+            </on-error-propagate>
+        </error-handler>
+    </flow>
+    <flow name="post:\ai:application\json:sys-openrouter-ai-m4-api-config">
+		<!-- [STUDIO:"Transform Message"]<ee:transform doc:name="Transform Message" doc:id="1cb3822f-c5e6-4102-b9ee-425602708ff6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+&#45;&#45;-
+
+{
+    "model": p("model"),
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an expert trip assistant. You will be given a specific route as a list of waypoints. You must find points of interest (POIs) very close to the path connecting these waypoints. Return ONLY the requested JSON."
+        },
+        {
+            "role": "user",
+            "content": "I am taking a road trip. Here is my route, defined by a list of [longitude, latitude&#93; waypoints: \n" ++ (payload.points as String) ++ "\n\nFind 5 interesting places to visit (like tourist spots or good restaurants) that are **no more than 3 km** from the direct path connecting these waypoints in order.\n\nStrictly output your answer in JSON format, with no other text. The JSON format must be:\n{\n  \"places\": [\n    {\n      \"place_name\": \"Name of Place 1\",\n      \"longlat\": \"longitude,latitude\",\n      \"distance_from_route_km\": \"<distance_in_km>\"\n    },\n    {\n      \"place_name\": \"Name of Place 2\",\n      \"longlat\": \"longitude,latitude\",\n      \"distance_from_route_km\": \"<distance_in_km>\"\n    }\n  &#93;\n}"
+        }
+    &#93;
+}&#93;&#93;></ee:set-payload>
+			</ee:message>
+		</ee:transform> [STUDIO] -->
+		<http:request doc:name="Request" doc:id="b7ec5cb6-aac7-49b2-ba37-10616acc7774" config-ref="request-to-get-famous-places-around-route" method="POST" path="v1/chat/completions">
+			<http:body><![CDATA[#[%dw 2.0
+output application/json
+---
+
+{
+    "model": p("model"),
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an expert trip assistant. You will be given a specific route as a list of waypoints. You must find points of interest (POIs) very close to the path connecting these waypoints. Return ONLY the requested JSON."
+        },
+        {
+            "role": "user",
+            "content": "I am taking a road trip. Here is my route, defined by a list of [longitude, latitude] waypoints: \n" ++ (write(payload,"application/json") as String) ++ "\n\nFind 5 interesting places to visit (like tourist spots or good restaurants) that are **no more than 3 km** from the direct path connecting these waypoints in order.\n\nStrictly output your answer in JSON format, with no other text. The JSON format must be:\n{\n  \"places\": [\n    {\n      \"place_name\": \"Name of Place 1\",\n      \"longlat\": \"longitude,latitude\",\n      \"distance_from_route_km\": \"<distance_in_km>\"\n    },\n    {\n      \"place_name\": \"Name of Place 2\",\n      \"longlat\": \"longitude,latitude\",\n      \"distance_from_route_km\": \"<distance_in_km>\"\n    }\n  ]\n}"
+        }
+    ]
+}]]]></http:body>
+				<http:headers><![CDATA[#[output application/java
+---
+{
+	"Authorization" : p("ai.key"),
+	"Content-Type" : "application/json"
+}]]]></http:headers>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="65599c39-16b9-4627-bb33-ee100fbc1d33" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<!-- [STUDIO:"Logger"]<logger level="INFO" doc:name="Logger" doc:id="890ad281-8aac-4c30-9b1d-99ded0306e1e" message="#[payload.choices.message.content&#93;"/> [STUDIO] -->
+    </flow>
+</mule>
