@@ -1,0 +1,3652 @@
+{
+  "minMuleVersion": "4.1.1",
+  "extensionModel": {
+    "types": [
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.Constants",
+            "hasDefaultConstructor": false,
+            "isInstantiable": false,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": true,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.Constants",
+          "typeAlias": {"value": "Constants"}
+        },
+        "type": "Object",
+        "fields": []
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.client.Client",
+            "hasDefaultConstructor": true,
+            "isInstantiable": true,
+            "isFinal": true,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": false,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.client.Client",
+          "typeAlias": {"value": "Client"}
+        },
+        "type": "Object",
+        "fields": [
+          {
+            "annotations": {"expressionSupport": {"value": "SUPPORTED"}},
+            "model": {"type": "String"},
+            "key": {
+              "name": "clientId",
+              "required": "true"
+            }
+          },
+          {
+            "annotations": {"expressionSupport": {"value": "SUPPORTED"}},
+            "model": {"type": "String"},
+            "key": {"name": "principal"}
+          },
+          {
+            "annotations": {"expressionSupport": {"value": "SUPPORTED"}},
+            "model": {"type": "String"},
+            "key": {"name": "clientName"}
+          },
+          {
+            "annotations": {"expressionSupport": {"value": "SUPPORTED"}},
+            "model": {"type": "String"},
+            "key": {"name": "description"}
+          },
+          {
+            "annotations": {"expressionSupport": {"value": "SUPPORTED"}},
+            "model": {"type": "String"},
+            "key": {"name": "secret"}
+          },
+          {
+            "annotations": {"expressionSupport": {"value": "SUPPORTED"}},
+            "model": {
+              "item": {"type": "String"},
+              "annotations": {"classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "java.util.Set",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": false,
+                "genericTypes": ["java.lang.String"],
+                "isInterface": true,
+                "isAbstract": true,
+                "isMap": false
+              }},
+              "type": "Array"
+            },
+            "key": {"name": "clientRedirectUris"}
+          },
+          {
+            "annotations": {"expressionSupport": {"value": "SUPPORTED"}},
+            "model": {
+              "item": {
+                "annotations": {
+                  "classInformation": {
+                    "implementedInterfaces": [],
+                    "parent": "java.lang.Enum",
+                    "classname": "com.mulesoft.modules.oauth2.provider.api.Constants$RequestGrantType",
+                    "hasDefaultConstructor": false,
+                    "isInstantiable": false,
+                    "isFinal": true,
+                    "genericTypes": [],
+                    "isInterface": false,
+                    "isAbstract": false,
+                    "isMap": false
+                  },
+                  "typeId": "com.mulesoft.modules.oauth2.provider.api.Constants.RequestGrantType",
+                  "enum": {
+                    "values": [
+                      "AUTHORIZATION_CODE",
+                      "REFRESH_TOKEN",
+                      "TOKEN",
+                      "PASSWORD",
+                      "CLIENT_CREDENTIALS"
+                    ],
+                    "type": "[Ljava.lang.String;"
+                  }
+                },
+                "type": "String"
+              },
+              "annotations": {"classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "java.util.Set",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": false,
+                "genericTypes": ["com.mulesoft.modules.oauth2.provider.api.Constants$RequestGrantType"],
+                "isInterface": true,
+                "isAbstract": true,
+                "isMap": false
+              }},
+              "type": "Array"
+            },
+            "key": {"name": "clientAuthorizedGrantTypes"}
+          },
+          {
+            "annotations": {"expressionSupport": {"value": "SUPPORTED"}},
+            "model": {
+              "item": {"type": "String"},
+              "annotations": {"classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "java.util.Set",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": false,
+                "genericTypes": ["java.lang.String"],
+                "isInterface": true,
+                "isAbstract": true,
+                "isMap": false
+              }},
+              "type": "Array"
+            },
+            "key": {"name": "clientScopes"}
+          },
+          {
+            "annotations": {
+              "default": "PUBLIC",
+              "expressionSupport": {"value": "SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "java.lang.Enum",
+                  "classname": "com.mulesoft.modules.oauth2.provider.api.client.ClientType",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": true,
+                  "genericTypes": [],
+                  "isInterface": false,
+                  "isAbstract": false,
+                  "isMap": false
+                },
+                "typeId": "com.mulesoft.modules.oauth2.provider.api.client.ClientType",
+                "enum": {
+                  "values": [
+                    "CONFIDENTIAL",
+                    "PUBLIC"
+                  ],
+                  "type": "[Ljava.lang.String;"
+                }
+              },
+              "type": "String"
+            },
+            "key": {"name": "type"}
+          }
+        ]
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.code.AuthorizationConfig",
+            "hasDefaultConstructor": true,
+            "isInstantiable": true,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": false,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.code.AuthorizationConfig",
+          "typeAlias": {"value": "AuthorizationConfig"}
+        },
+        "type": "Object",
+        "fields": [
+          {
+            "annotations": {
+              "default": "www-static/auth.html",
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {"type": "String"},
+            "key": {"name": "loginPage"}
+          },
+          {
+            "annotations": {
+              "default": "/authorize",
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {"type": "String"},
+            "key": {"name": "path"}
+          },
+          {
+            "annotations": {
+              "stereotype": {"allowedStereotypes": [{
+                "namespace": "OS",
+                "type": "OBJECT_STORE"
+              }]},
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "extensibleType": {},
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "org.mule.runtime.api.store.ObjectStore",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": false,
+                  "genericTypes": [],
+                  "isInterface": true,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "typeId": "org.mule.runtime.api.store.ObjectStore",
+                "typeAlias": {"value": "ObjectStore"}
+              },
+              "type": "Object",
+              "fields": []
+            },
+            "key": {"name": "authorizationCodeStore"}
+          }
+        ]
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": ["org.mule.runtime.api.exception.ErrorMessageAwareException"],
+            "parent": "org.mule.runtime.extension.api.exception.ModuleException",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.exception.OAuth2Exception",
+            "hasDefaultConstructor": false,
+            "isInstantiable": false,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": false,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.exception.OAuth2Exception",
+          "typeAlias": {"value": "OAuth2Exception"}
+        },
+        "type": "Object",
+        "fields": [
+          {
+            "annotations": {"visibility": "READ_ONLY"},
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "java.lang.Throwable",
+                  "hasDefaultConstructor": true,
+                  "isInstantiable": true,
+                  "isFinal": false,
+                  "genericTypes": [],
+                  "isInterface": false,
+                  "isAbstract": false,
+                  "isMap": false
+                },
+                "typeId": "java.lang.Throwable",
+                "typeAlias": {"value": "Throwable"}
+              },
+              "type": "Object",
+              "fields": [
+                {
+                  "annotations": {"visibility": "READ_ONLY"},
+                  "model": "#..",
+                  "key": {"name": "cause"}
+                },
+                {
+                  "annotations": {"visibility": "READ_ONLY"},
+                  "model": {"type": "String"},
+                  "key": {"name": "localizedMessage"}
+                },
+                {
+                  "annotations": {"visibility": "READ_ONLY"},
+                  "model": {"type": "String"},
+                  "key": {"name": "message"}
+                },
+                {
+                  "model": {
+                    "item": {
+                      "annotations": {
+                        "classInformation": {
+                          "implementedInterfaces": [],
+                          "parent": "",
+                          "classname": "java.lang.StackTraceElement",
+                          "hasDefaultConstructor": false,
+                          "isInstantiable": false,
+                          "isFinal": true,
+                          "genericTypes": [],
+                          "isInterface": false,
+                          "isAbstract": false,
+                          "isMap": false
+                        },
+                        "typeId": "java.lang.StackTraceElement",
+                        "typeAlias": {"value": "StackTraceElement"}
+                      },
+                      "type": "Object",
+                      "fields": [
+                        {
+                          "annotations": {"visibility": "READ_ONLY"},
+                          "model": {"type": "String"},
+                          "key": {"name": "classLoaderName"}
+                        },
+                        {
+                          "annotations": {"visibility": "READ_ONLY"},
+                          "model": {"type": "String"},
+                          "key": {"name": "className"}
+                        },
+                        {
+                          "annotations": {"visibility": "READ_ONLY"},
+                          "model": {"type": "String"},
+                          "key": {"name": "fileName"}
+                        },
+                        {
+                          "annotations": {"visibility": "READ_ONLY"},
+                          "model": {
+                            "annotations": {
+                              "classInformation": {
+                                "implementedInterfaces": [],
+                                "parent": "",
+                                "classname": "int",
+                                "hasDefaultConstructor": false,
+                                "isInstantiable": false,
+                                "isFinal": true,
+                                "genericTypes": [],
+                                "isInterface": false,
+                                "isAbstract": true,
+                                "isMap": false
+                              },
+                              "int": {}
+                            },
+                            "type": "Number"
+                          },
+                          "key": {"name": "lineNumber"}
+                        },
+                        {
+                          "annotations": {"visibility": "READ_ONLY"},
+                          "model": {"type": "String"},
+                          "key": {"name": "methodName"}
+                        },
+                        {
+                          "annotations": {"visibility": "READ_ONLY"},
+                          "model": {"type": "String"},
+                          "key": {"name": "moduleName"}
+                        },
+                        {
+                          "annotations": {"visibility": "READ_ONLY"},
+                          "model": {"type": "String"},
+                          "key": {"name": "moduleVersion"}
+                        },
+                        {
+                          "annotations": {"visibility": "READ_ONLY"},
+                          "model": {
+                            "annotations": {"typeId": "boolean"},
+                            "type": "Boolean"
+                          },
+                          "key": {"name": "nativeMethod"}
+                        }
+                      ]
+                    },
+                    "annotations": {"classInformation": {
+                      "implementedInterfaces": [],
+                      "parent": "",
+                      "classname": "java.lang.StackTraceElement[]",
+                      "hasDefaultConstructor": false,
+                      "isInstantiable": false,
+                      "isFinal": true,
+                      "genericTypes": [],
+                      "isInterface": false,
+                      "isAbstract": true,
+                      "isMap": false
+                    }},
+                    "type": "Array"
+                  },
+                  "key": {"name": "stackTrace"}
+                },
+                {
+                  "annotations": {"visibility": "READ_ONLY"},
+                  "model": {
+                    "item": "#../..",
+                    "annotations": {"classInformation": {
+                      "implementedInterfaces": [],
+                      "parent": "",
+                      "classname": "java.lang.Throwable[]",
+                      "hasDefaultConstructor": false,
+                      "isInstantiable": false,
+                      "isFinal": true,
+                      "genericTypes": [],
+                      "isInterface": false,
+                      "isAbstract": true,
+                      "isMap": false
+                    }},
+                    "type": "Array"
+                  },
+                  "key": {"name": "suppressed"}
+                }
+              ]
+            },
+            "key": {"name": "cause"}
+          },
+          {
+            "annotations": {"visibility": "READ_ONLY"},
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "org.mule.runtime.api.message.Message",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": false,
+                  "genericTypes": [],
+                  "isInterface": true,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "typeId": "org.mule.runtime.api.message.Message",
+                "typeAlias": {"value": "Message"}
+              },
+              "type": "Object",
+              "fields": []
+            },
+            "key": {"name": "errorMessage"}
+          },
+          {
+            "annotations": {"visibility": "READ_ONLY"},
+            "model": {"type": "String"},
+            "key": {"name": "localizedMessage"}
+          },
+          {
+            "annotations": {"visibility": "READ_ONLY"},
+            "model": {"type": "String"},
+            "key": {"name": "message"}
+          },
+          {
+            "model": {
+              "item": {
+                "annotations": {
+                  "classInformation": {
+                    "implementedInterfaces": [],
+                    "parent": "",
+                    "classname": "java.lang.StackTraceElement",
+                    "hasDefaultConstructor": false,
+                    "isInstantiable": false,
+                    "isFinal": true,
+                    "genericTypes": [],
+                    "isInterface": false,
+                    "isAbstract": false,
+                    "isMap": false
+                  },
+                  "typeId": "java.lang.StackTraceElement",
+                  "typeAlias": {"value": "StackTraceElement"}
+                },
+                "type": "Object",
+                "fields": [
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {"type": "String"},
+                    "key": {"name": "classLoaderName"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {"type": "String"},
+                    "key": {"name": "className"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {"type": "String"},
+                    "key": {"name": "fileName"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {
+                      "annotations": {
+                        "classInformation": {
+                          "implementedInterfaces": [],
+                          "parent": "",
+                          "classname": "int",
+                          "hasDefaultConstructor": false,
+                          "isInstantiable": false,
+                          "isFinal": true,
+                          "genericTypes": [],
+                          "isInterface": false,
+                          "isAbstract": true,
+                          "isMap": false
+                        },
+                        "int": {}
+                      },
+                      "type": "Number"
+                    },
+                    "key": {"name": "lineNumber"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {"type": "String"},
+                    "key": {"name": "methodName"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {"type": "String"},
+                    "key": {"name": "moduleName"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {"type": "String"},
+                    "key": {"name": "moduleVersion"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {
+                      "annotations": {"typeId": "boolean"},
+                      "type": "Boolean"
+                    },
+                    "key": {"name": "nativeMethod"}
+                  }
+                ]
+              },
+              "annotations": {"classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "java.lang.StackTraceElement[]",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": true,
+                "genericTypes": [],
+                "isInterface": false,
+                "isAbstract": true,
+                "isMap": false
+              }},
+              "type": "Array"
+            },
+            "key": {"name": "stackTrace"}
+          },
+          {
+            "annotations": {"visibility": "READ_ONLY"},
+            "model": {
+              "item": {
+                "annotations": {
+                  "classInformation": {
+                    "implementedInterfaces": [],
+                    "parent": "",
+                    "classname": "java.lang.Throwable",
+                    "hasDefaultConstructor": true,
+                    "isInstantiable": true,
+                    "isFinal": false,
+                    "genericTypes": [],
+                    "isInterface": false,
+                    "isAbstract": false,
+                    "isMap": false
+                  },
+                  "typeId": "java.lang.Throwable",
+                  "typeAlias": {"value": "Throwable"}
+                },
+                "type": "Object",
+                "fields": [
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": "#..",
+                    "key": {"name": "cause"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {"type": "String"},
+                    "key": {"name": "localizedMessage"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": {"type": "String"},
+                    "key": {"name": "message"}
+                  },
+                  {
+                    "model": {
+                      "item": {
+                        "annotations": {
+                          "classInformation": {
+                            "implementedInterfaces": [],
+                            "parent": "",
+                            "classname": "java.lang.StackTraceElement",
+                            "hasDefaultConstructor": false,
+                            "isInstantiable": false,
+                            "isFinal": true,
+                            "genericTypes": [],
+                            "isInterface": false,
+                            "isAbstract": false,
+                            "isMap": false
+                          },
+                          "typeId": "java.lang.StackTraceElement",
+                          "typeAlias": {"value": "StackTraceElement"}
+                        },
+                        "type": "Object",
+                        "fields": [
+                          {
+                            "annotations": {"visibility": "READ_ONLY"},
+                            "model": {"type": "String"},
+                            "key": {"name": "classLoaderName"}
+                          },
+                          {
+                            "annotations": {"visibility": "READ_ONLY"},
+                            "model": {"type": "String"},
+                            "key": {"name": "className"}
+                          },
+                          {
+                            "annotations": {"visibility": "READ_ONLY"},
+                            "model": {"type": "String"},
+                            "key": {"name": "fileName"}
+                          },
+                          {
+                            "annotations": {"visibility": "READ_ONLY"},
+                            "model": {
+                              "annotations": {
+                                "classInformation": {
+                                  "implementedInterfaces": [],
+                                  "parent": "",
+                                  "classname": "int",
+                                  "hasDefaultConstructor": false,
+                                  "isInstantiable": false,
+                                  "isFinal": true,
+                                  "genericTypes": [],
+                                  "isInterface": false,
+                                  "isAbstract": true,
+                                  "isMap": false
+                                },
+                                "int": {}
+                              },
+                              "type": "Number"
+                            },
+                            "key": {"name": "lineNumber"}
+                          },
+                          {
+                            "annotations": {"visibility": "READ_ONLY"},
+                            "model": {"type": "String"},
+                            "key": {"name": "methodName"}
+                          },
+                          {
+                            "annotations": {"visibility": "READ_ONLY"},
+                            "model": {"type": "String"},
+                            "key": {"name": "moduleName"}
+                          },
+                          {
+                            "annotations": {"visibility": "READ_ONLY"},
+                            "model": {"type": "String"},
+                            "key": {"name": "moduleVersion"}
+                          },
+                          {
+                            "annotations": {"visibility": "READ_ONLY"},
+                            "model": {
+                              "annotations": {"typeId": "boolean"},
+                              "type": "Boolean"
+                            },
+                            "key": {"name": "nativeMethod"}
+                          }
+                        ]
+                      },
+                      "annotations": {"classInformation": {
+                        "implementedInterfaces": [],
+                        "parent": "",
+                        "classname": "java.lang.StackTraceElement[]",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": true,
+                        "genericTypes": [],
+                        "isInterface": false,
+                        "isAbstract": true,
+                        "isMap": false
+                      }},
+                      "type": "Array"
+                    },
+                    "key": {"name": "stackTrace"}
+                  },
+                  {
+                    "annotations": {"visibility": "READ_ONLY"},
+                    "model": "#../..",
+                    "key": {"name": "suppressed"}
+                  }
+                ]
+              },
+              "annotations": {"classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "java.lang.Throwable[]",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": true,
+                "genericTypes": [],
+                "isInterface": false,
+                "isAbstract": true,
+                "isMap": false
+              }},
+              "type": "Array"
+            },
+            "key": {"name": "suppressed"}
+          },
+          {
+            "annotations": {"visibility": "READ_ONLY"},
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "org.mule.runtime.extension.api.error.ErrorTypeDefinition",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": false,
+                  "genericTypes": [],
+                  "isInterface": true,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "typeId": "org.mule.runtime.extension.api.error.ErrorTypeDefinition",
+                "typeAlias": {"value": "ErrorTypeDefinition"}
+              },
+              "type": "Object",
+              "fields": []
+            },
+            "key": {"name": "type"}
+          }
+        ]
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": ["com.mulesoft.modules.oauth2.provider.api.ratelimit.RateLimiter"],
+            "parent": "",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.ratelimit.PeriodRateLimiter",
+            "hasDefaultConstructor": true,
+            "isInstantiable": true,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": false,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.ratelimit.PeriodRateLimiter",
+          "typeAlias": {"value": "PeriodRateLimiter"}
+        },
+        "type": "Object",
+        "fields": [
+          {
+            "annotations": {
+              "default": "600",
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "int",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": true,
+                  "genericTypes": [],
+                  "isInterface": false,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "int": {}
+              },
+              "type": "Number"
+            },
+            "key": {"name": "duration"}
+          },
+          {
+            "annotations": {
+              "default": "SECONDS",
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "java.lang.Enum",
+                  "classname": "java.util.concurrent.TimeUnit",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": true,
+                  "genericTypes": [],
+                  "isInterface": false,
+                  "isAbstract": false,
+                  "isMap": false
+                },
+                "typeId": "java.util.concurrent.TimeUnit",
+                "enum": {
+                  "values": [
+                    "NANOSECONDS",
+                    "MICROSECONDS",
+                    "MILLISECONDS",
+                    "SECONDS",
+                    "MINUTES",
+                    "HOURS",
+                    "DAYS"
+                  ],
+                  "type": "[Ljava.lang.String;"
+                }
+              },
+              "type": "String"
+            },
+            "key": {"name": "durationTimeUnit"}
+          },
+          {
+            "annotations": {
+              "default": "5",
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "int",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": true,
+                  "genericTypes": [],
+                  "isInterface": false,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "int": {}
+              },
+              "type": "Number"
+            },
+            "key": {"name": "maximumFailureCount"}
+          }
+        ]
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "extensibleType": {},
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.ratelimit.RateLimiter",
+            "hasDefaultConstructor": false,
+            "isInstantiable": false,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": true,
+            "isAbstract": true,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.ratelimit.RateLimiter",
+          "stereotype": {"allowedStereotypes": [{
+            "namespace": "OAUTH2-PROVIDER",
+            "type": "RATE_LIMITER"
+          }]},
+          "typeAlias": {"value": "RateLimiter"}
+        },
+        "type": "Object",
+        "fields": []
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.token.TokenConfig",
+            "hasDefaultConstructor": true,
+            "isInstantiable": true,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": false,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.token.TokenConfig",
+          "typeAlias": {"value": "TokenConfig"}
+        },
+        "type": "Object",
+        "fields": [
+          {
+            "annotations": {
+              "default": "/token",
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {"type": "String"},
+            "key": {"name": "path"}
+          },
+          {
+            "annotations": {
+              "stereotype": {"allowedStereotypes": [{
+                "namespace": "OS",
+                "type": "OBJECT_STORE"
+              }]},
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "extensibleType": {},
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "org.mule.runtime.api.store.ObjectStore",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": false,
+                  "genericTypes": [],
+                  "isInterface": true,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "typeId": "org.mule.runtime.api.store.ObjectStore",
+                "typeAlias": {"value": "ObjectStore"}
+              },
+              "type": "Object",
+              "fields": []
+            },
+            "key": {"name": "tokenStore"}
+          },
+          {
+            "annotations": {
+              "defaultImplementingType": {
+                "format": "java",
+                "annotations": {
+                  "classInformation": {
+                    "implementedInterfaces": [],
+                    "parent": "com.mulesoft.modules.oauth2.provider.internal.token.generator.AbstractRefreshTokenStrategy",
+                    "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.NoRefreshTokenStrategy",
+                    "hasDefaultConstructor": true,
+                    "isInstantiable": true,
+                    "isFinal": false,
+                    "genericTypes": [],
+                    "isInterface": false,
+                    "isAbstract": false,
+                    "isMap": false
+                  },
+                  "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.NoRefreshTokenStrategy",
+                  "typeAlias": {"value": "noRefreshToken"}
+                },
+                "type": "Object",
+                "fields": [{
+                  "annotations": {"visibility": "WRITE_ONLY"},
+                  "model": {
+                    "annotations": {
+                      "classInformation": {
+                        "implementedInterfaces": [],
+                        "parent": "",
+                        "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorStrategy",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": false,
+                        "genericTypes": [],
+                        "isInterface": true,
+                        "isAbstract": true,
+                        "isMap": false
+                      },
+                      "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorStrategy",
+                      "stereotype": {"allowedStereotypes": [{
+                        "namespace": "OAUTH2-PROVIDER",
+                        "type": "TOKEN_GENERATOR_STRATEGY"
+                      }]},
+                      "typeAlias": {"value": "TokenGeneratorStrategy"}
+                    },
+                    "type": "Object",
+                    "fields": []
+                  },
+                  "key": {"name": "tokenGeneratorStrategy"}
+                }]
+              },
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "extensibleType": {},
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.RefreshTokenStrategy",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": false,
+                  "genericTypes": [],
+                  "isInterface": true,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.RefreshTokenStrategy",
+                "stereotype": {"allowedStereotypes": [{
+                  "namespace": "OAUTH2-PROVIDER",
+                  "type": "REFRESH_TOKEN_STRATEGY"
+                }]},
+                "typeAlias": {"value": "RefreshTokenStrategy"}
+              },
+              "type": "Object",
+              "fields": []
+            },
+            "key": {"name": "refreshTokenStrategy"}
+          },
+          {
+            "annotations": {
+              "default": "86400",
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "int",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": true,
+                  "genericTypes": [],
+                  "isInterface": false,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "int": {}
+              },
+              "type": "Number"
+            },
+            "key": {"name": "tokenTtl"}
+          },
+          {
+            "annotations": {
+              "default": "SECONDS",
+              "expressionSupport": {"value": "NOT_SUPPORTED"}
+            },
+            "model": {
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "java.lang.Enum",
+                  "classname": "java.util.concurrent.TimeUnit",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": true,
+                  "genericTypes": [],
+                  "isInterface": false,
+                  "isAbstract": false,
+                  "isMap": false
+                },
+                "typeId": "java.util.concurrent.TimeUnit",
+                "enum": {
+                  "values": [
+                    "NANOSECONDS",
+                    "MICROSECONDS",
+                    "MILLISECONDS",
+                    "SECONDS",
+                    "MINUTES",
+                    "HOURS",
+                    "DAYS"
+                  ],
+                  "type": "[Ljava.lang.String;"
+                }
+              },
+              "type": "String"
+            },
+            "key": {"name": "tokenTtlTimeUnit"}
+          }
+        ]
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "com.mulesoft.modules.oauth2.provider.internal.token.generator.ObjectStoreAwareRefreshTokenStrategy",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.MultipleRefreshTokensStrategy",
+            "hasDefaultConstructor": true,
+            "isInstantiable": true,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": false,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.MultipleRefreshTokensStrategy",
+          "typeAlias": {"value": "multipleRefreshTokens"}
+        },
+        "type": "Object",
+        "fields": [{
+          "annotations": {
+            "stereotype": {"allowedStereotypes": [{
+              "namespace": "OS",
+              "type": "OBJECT_STORE"
+            }]},
+            "expressionSupport": {"value": "SUPPORTED"}
+          },
+          "model": {
+            "annotations": {
+              "extensibleType": {},
+              "classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "org.mule.runtime.api.store.ObjectStore",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": false,
+                "genericTypes": [],
+                "isInterface": true,
+                "isAbstract": true,
+                "isMap": false
+              },
+              "typeId": "org.mule.runtime.api.store.ObjectStore",
+              "typeAlias": {"value": "ObjectStore"}
+            },
+            "type": "Object",
+            "fields": []
+          },
+          "key": {"name": "objectStore"}
+        }]
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "com.mulesoft.modules.oauth2.provider.internal.token.generator.AbstractRefreshTokenStrategy",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.NoRefreshTokenStrategy",
+            "hasDefaultConstructor": true,
+            "isInstantiable": true,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": false,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.NoRefreshTokenStrategy",
+          "typeAlias": {"value": "noRefreshToken"}
+        },
+        "type": "Object",
+        "fields": [{
+          "annotations": {"visibility": "WRITE_ONLY"},
+          "model": {
+            "annotations": {
+              "classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorStrategy",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": false,
+                "genericTypes": [],
+                "isInterface": true,
+                "isAbstract": true,
+                "isMap": false
+              },
+              "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorStrategy",
+              "stereotype": {"allowedStereotypes": [{
+                "namespace": "OAUTH2-PROVIDER",
+                "type": "TOKEN_GENERATOR_STRATEGY"
+              }]},
+              "typeAlias": {"value": "TokenGeneratorStrategy"}
+            },
+            "type": "Object",
+            "fields": []
+          },
+          "key": {"name": "tokenGeneratorStrategy"}
+        }]
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "extensibleType": {},
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.RefreshTokenStrategy",
+            "hasDefaultConstructor": false,
+            "isInstantiable": false,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": true,
+            "isAbstract": true,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.RefreshTokenStrategy",
+          "stereotype": {"allowedStereotypes": [{
+            "namespace": "OAUTH2-PROVIDER",
+            "type": "REFRESH_TOKEN_STRATEGY"
+          }]},
+          "typeAlias": {"value": "RefreshTokenStrategy"}
+        },
+        "type": "Object",
+        "fields": []
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "com.mulesoft.modules.oauth2.provider.internal.token.generator.ObjectStoreAwareRefreshTokenStrategy",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.SingleRefreshTokenStrategy",
+            "hasDefaultConstructor": true,
+            "isInstantiable": true,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": false,
+            "isAbstract": false,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.SingleRefreshTokenStrategy",
+          "typeAlias": {"value": "singleRefreshToken"}
+        },
+        "type": "Object",
+        "fields": [{
+          "annotations": {
+            "stereotype": {"allowedStereotypes": [{
+              "namespace": "OS",
+              "type": "OBJECT_STORE"
+            }]},
+            "expressionSupport": {"value": "SUPPORTED"}
+          },
+          "model": {
+            "annotations": {
+              "extensibleType": {},
+              "classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "org.mule.runtime.api.store.ObjectStore",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": false,
+                "genericTypes": [],
+                "isInterface": true,
+                "isAbstract": true,
+                "isMap": false
+              },
+              "typeId": "org.mule.runtime.api.store.ObjectStore",
+              "typeAlias": {"value": "ObjectStore"}
+            },
+            "type": "Object",
+            "fields": []
+          },
+          "key": {"name": "objectStore"}
+        }]
+      },
+      {
+        "format": "java",
+        "annotations": {
+          "classInformation": {
+            "implementedInterfaces": [],
+            "parent": "",
+            "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorStrategy",
+            "hasDefaultConstructor": false,
+            "isInstantiable": false,
+            "isFinal": false,
+            "genericTypes": [],
+            "isInterface": true,
+            "isAbstract": true,
+            "isMap": false
+          },
+          "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorStrategy",
+          "stereotype": {"allowedStereotypes": [{
+            "namespace": "OAUTH2-PROVIDER",
+            "type": "TOKEN_GENERATOR_STRATEGY"
+          }]},
+          "typeAlias": {"value": "TokenGeneratorStrategy"}
+        },
+        "type": "Object",
+        "fields": []
+      }
+    ],
+    "messageSources": [],
+    "functions": [],
+    "configurations": [{
+      "externalLibraryModels": [],
+      "operations": [
+        {
+          "semanticTerms": [],
+          "visibility": "PUBLIC",
+          "kind": "operation",
+          "executionType": "CPU_LITE",
+          "description": "Creates a new client and saves it in the configured client store. <p/> ../../../doc/oauth2-provider-connector.xml.sample oauth2-provider:create-client",
+          "modelProperties": {},
+          "parameterGroupModels": [
+            {
+              "name": "General",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 1
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "the Client Id",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": true,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "clientId",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 1
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "defaultValue": "PUBLIC",
+                  "description": "",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "annotations": {
+                      "classInformation": {
+                        "implementedInterfaces": [],
+                        "parent": "java.lang.Enum",
+                        "classname": "com.mulesoft.modules.oauth2.provider.api.client.ClientType",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": true,
+                        "genericTypes": [],
+                        "isInterface": false,
+                        "isAbstract": false,
+                        "isMap": false
+                      },
+                      "typeId": "com.mulesoft.modules.oauth2.provider.api.client.ClientType",
+                      "enum": {
+                        "values": [
+                          "CONFIDENTIAL",
+                          "PUBLIC"
+                        ],
+                        "type": "[Ljava.lang.String;"
+                      }
+                    },
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "type",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 2
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "secret",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 3
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "a friendly name for the Client",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "clientName",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 4
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "a brief description of the Client",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "description",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 5
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "An optional principal to use when the ID can't be used with the security provider",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "principal",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 6
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "a list with the Client's valid redirect uris",
+                  "modelProperties": {},
+                  "type": {
+                    "item": {"type": "String"},
+                    "format": "java",
+                    "annotations": {"classInformation": {
+                      "implementedInterfaces": [],
+                      "parent": "",
+                      "classname": "java.util.Set",
+                      "hasDefaultConstructor": false,
+                      "isInstantiable": false,
+                      "isFinal": false,
+                      "genericTypes": ["java.lang.String"],
+                      "isInterface": true,
+                      "isAbstract": true,
+                      "isMap": false
+                    }},
+                    "type": "Array"
+                  },
+                  "required": false,
+                  "expressionSupport": "REQUIRED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "redirectUris",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 7
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "the Client's supported grant types",
+                  "modelProperties": {},
+                  "type": {
+                    "item": {
+                      "annotations": {
+                        "classInformation": {
+                          "implementedInterfaces": [],
+                          "parent": "java.lang.Enum",
+                          "classname": "com.mulesoft.modules.oauth2.provider.api.Constants$RequestGrantType",
+                          "hasDefaultConstructor": false,
+                          "isInstantiable": false,
+                          "isFinal": true,
+                          "genericTypes": [],
+                          "isInterface": false,
+                          "isAbstract": false,
+                          "isMap": false
+                        },
+                        "typeId": "com.mulesoft.modules.oauth2.provider.api.Constants.RequestGrantType",
+                        "enum": {
+                          "values": [
+                            "AUTHORIZATION_CODE",
+                            "REFRESH_TOKEN",
+                            "TOKEN",
+                            "PASSWORD",
+                            "CLIENT_CREDENTIALS"
+                          ],
+                          "type": "[Ljava.lang.String;"
+                        }
+                      },
+                      "type": "String"
+                    },
+                    "format": "java",
+                    "annotations": {"classInformation": {
+                      "implementedInterfaces": [],
+                      "parent": "",
+                      "classname": "java.util.Set",
+                      "hasDefaultConstructor": false,
+                      "isInstantiable": false,
+                      "isFinal": false,
+                      "genericTypes": ["com.mulesoft.modules.oauth2.provider.api.Constants$RequestGrantType"],
+                      "isInterface": true,
+                      "isAbstract": true,
+                      "isMap": false
+                    }},
+                    "type": "Array"
+                  },
+                  "required": false,
+                  "expressionSupport": "REQUIRED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "authorizedGrantTypes",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 8
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "the Client's supported scopes",
+                  "modelProperties": {},
+                  "type": {
+                    "item": {"type": "String"},
+                    "format": "java",
+                    "annotations": {"classInformation": {
+                      "implementedInterfaces": [],
+                      "parent": "",
+                      "classname": "java.util.Set",
+                      "hasDefaultConstructor": false,
+                      "isInstantiable": false,
+                      "isFinal": false,
+                      "genericTypes": ["java.lang.String"],
+                      "isInterface": true,
+                      "isAbstract": true,
+                      "isMap": false
+                    }},
+                    "type": "Array"
+                  },
+                  "required": false,
+                  "expressionSupport": "REQUIRED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "scopes",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 9
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "defaultValue": "false",
+                  "description": "boolean to indicate if the operation should fail when the client id is already used. Otherwise it should override the infotmation for the registered client",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "annotations": {"typeId": "boolean"},
+                    "type": "Boolean"
+                  },
+                  "required": false,
+                  "expressionSupport": "NOT_SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "failIfPresent",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 10
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "The name of the configuration to be used to execute this component",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "annotations": {
+                      "classInformation": {
+                        "implementedInterfaces": [],
+                        "parent": "",
+                        "classname": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": false,
+                        "genericTypes": [],
+                        "isInterface": true,
+                        "isAbstract": true,
+                        "isMap": false
+                      },
+                      "typeId": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider"
+                    },
+                    "type": "Object",
+                    "fields": []
+                  },
+                  "required": true,
+                  "expressionSupport": "NOT_SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "config-ref",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 11
+                  },
+                  "allowedStereotypeModels": [{
+                    "parent": {
+                      "namespace": "MULE",
+                      "type": "MODULE_CONFIG"
+                    },
+                    "namespace": "OAUTH2-PROVIDER",
+                    "type": "CONFIG"
+                  }],
+                  "isComponentId": false
+                }
+              ],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            },
+            {
+              "name": "Error Mappings",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 2
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [{
+                "semanticTerms": [],
+                "role": "BEHAVIOUR",
+                "description": "Set of error mappings",
+                "modelProperties": {
+                  "org.mule.runtime.extension.api.property.InfrastructureParameterModelProperty": {"sequence": 12},
+                  "org.mule.runtime.extension.api.property.QNameModelProperty": {"value": {
+                    "localPart": "error-mappings",
+                    "prefix": "mule",
+                    "namespaceURI": "http://www.mulesoft.org/schema/mule/core"
+                  }},
+                  "sinceMuleVersion": {"version": "4.4.0"}
+                },
+                "type": {
+                  "item": {
+                    "annotations": {
+                      "infrastructureType": {},
+                      "typeId": "errorMapping"
+                    },
+                    "type": "Object",
+                    "fields": [
+                      {
+                        "model": {
+                          "format": {
+                            "validMimeTypes": ["text/plain"],
+                            "id": "text",
+                            "label": "Text"
+                          },
+                          "annotations": {
+                            "typeId": "errorTypeMatcher",
+                            "enum": {
+                              "values": [
+                                "ANY",
+                                "REDELIVERY_EXHAUSTED",
+                                "TRANSFORMATION",
+                                "EXPRESSION",
+                                "SECURITY",
+                                "CLIENT_SECURITY",
+                                "SERVER_SECURITY",
+                                "ROUTING",
+                                "CONNECTIVITY",
+                                "RETRY_EXHAUSTED",
+                                "TIMEOUT"
+                              ],
+                              "type": "[Ljava.lang.String;"
+                            }
+                          },
+                          "type": "String"
+                        },
+                        "key": {"name": "source"}
+                      },
+                      {
+                        "model": {
+                          "format": {
+                            "validMimeTypes": ["text/plain"],
+                            "id": "text",
+                            "label": "Text"
+                          },
+                          "annotations": {"typeId": "errorTypeDefinition"},
+                          "type": "String"
+                        },
+                        "key": {
+                          "name": "target",
+                          "required": "true"
+                        }
+                      }
+                    ]
+                  },
+                  "format": "java",
+                  "annotations": {
+                    "typeDsl": {
+                      "allowTopLevelDefinition": false,
+                      "allowInlineDefinition": true
+                    },
+                    "infrastructureType": {},
+                    "description": {"value": "Determines that an error thrown by this operation should be mapped to another"}
+                  },
+                  "type": "Array"
+                },
+                "required": false,
+                "expressionSupport": "NOT_SUPPORTED",
+                "fieldValueProviderModels": [],
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": true,
+                  "allowsReferences": false
+                },
+                "name": "errorMappings",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "Error Mapping",
+                  "query": false,
+                  "text": false,
+                  "order": 12
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              }],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            }
+          ],
+          "output": {
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "Void"
+            }
+          },
+          "outputAttributes": {
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "Void"
+            }
+          },
+          "supportsStreaming": false,
+          "requiresConnection": false,
+          "blocking": true,
+          "name": "createClient",
+          "stereotype": {
+            "parent": {
+              "parent": {
+                "namespace": "MULE",
+                "type": "PROCESSOR"
+              },
+              "namespace": "OAUTH2-PROVIDER",
+              "type": "PROCESSOR"
+            },
+            "namespace": "OAUTH2-PROVIDER",
+            "type": "CREATE_CLIENT"
+          },
+          "nestedComponents": [],
+          "transactional": false,
+          "notifications": [],
+          "errors": [
+            "OAUTH2-PROVIDER:INVALID_CONFIGURATION",
+            "OAUTH2-PROVIDER:CLIENT_ALREADY_EXISTS"
+          ]
+        },
+        {
+          "semanticTerms": [],
+          "visibility": "PUBLIC",
+          "kind": "operation",
+          "executionType": "CPU_LITE",
+          "description": "<p> Deletes a client from the store. <\/p> ../../../doc/oauth2-provider-connector.xml.sample oauth2-provider:delete-client",
+          "modelProperties": {},
+          "parameterGroupModels": [
+            {
+              "name": "General",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 1
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "the Client Id",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": true,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "clientId",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 1
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "secret",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 2
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "The name of the configuration to be used to execute this component",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "annotations": {
+                      "classInformation": {
+                        "implementedInterfaces": [],
+                        "parent": "",
+                        "classname": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": false,
+                        "genericTypes": [],
+                        "isInterface": true,
+                        "isAbstract": true,
+                        "isMap": false
+                      },
+                      "typeId": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider"
+                    },
+                    "type": "Object",
+                    "fields": []
+                  },
+                  "required": true,
+                  "expressionSupport": "NOT_SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "config-ref",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 3
+                  },
+                  "allowedStereotypeModels": [{
+                    "parent": {
+                      "namespace": "MULE",
+                      "type": "MODULE_CONFIG"
+                    },
+                    "namespace": "OAUTH2-PROVIDER",
+                    "type": "CONFIG"
+                  }],
+                  "isComponentId": false
+                }
+              ],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            },
+            {
+              "name": "Error Mappings",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 2
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [{
+                "semanticTerms": [],
+                "role": "BEHAVIOUR",
+                "description": "Set of error mappings",
+                "modelProperties": {
+                  "org.mule.runtime.extension.api.property.InfrastructureParameterModelProperty": {"sequence": 12},
+                  "org.mule.runtime.extension.api.property.QNameModelProperty": {"value": {
+                    "localPart": "error-mappings",
+                    "prefix": "mule",
+                    "namespaceURI": "http://www.mulesoft.org/schema/mule/core"
+                  }},
+                  "sinceMuleVersion": {"version": "4.4.0"}
+                },
+                "type": {
+                  "item": {
+                    "annotations": {
+                      "infrastructureType": {},
+                      "typeId": "errorMapping"
+                    },
+                    "type": "Object",
+                    "fields": [
+                      {
+                        "model": {
+                          "format": {
+                            "validMimeTypes": ["text/plain"],
+                            "id": "text",
+                            "label": "Text"
+                          },
+                          "annotations": {
+                            "typeId": "errorTypeMatcher",
+                            "enum": {
+                              "values": [
+                                "ANY",
+                                "REDELIVERY_EXHAUSTED",
+                                "TRANSFORMATION",
+                                "EXPRESSION",
+                                "SECURITY",
+                                "CLIENT_SECURITY",
+                                "SERVER_SECURITY",
+                                "ROUTING",
+                                "CONNECTIVITY",
+                                "RETRY_EXHAUSTED",
+                                "TIMEOUT"
+                              ],
+                              "type": "[Ljava.lang.String;"
+                            }
+                          },
+                          "type": "String"
+                        },
+                        "key": {"name": "source"}
+                      },
+                      {
+                        "model": {
+                          "format": {
+                            "validMimeTypes": ["text/plain"],
+                            "id": "text",
+                            "label": "Text"
+                          },
+                          "annotations": {"typeId": "errorTypeDefinition"},
+                          "type": "String"
+                        },
+                        "key": {
+                          "name": "target",
+                          "required": "true"
+                        }
+                      }
+                    ]
+                  },
+                  "format": "java",
+                  "annotations": {
+                    "typeDsl": {
+                      "allowTopLevelDefinition": false,
+                      "allowInlineDefinition": true
+                    },
+                    "infrastructureType": {},
+                    "description": {"value": "Determines that an error thrown by this operation should be mapped to another"}
+                  },
+                  "type": "Array"
+                },
+                "required": false,
+                "expressionSupport": "NOT_SUPPORTED",
+                "fieldValueProviderModels": [],
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": true,
+                  "allowsReferences": false
+                },
+                "name": "errorMappings",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "Error Mapping",
+                  "query": false,
+                  "text": false,
+                  "order": 4
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              }],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            }
+          ],
+          "output": {
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "Void"
+            }
+          },
+          "outputAttributes": {
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "Void"
+            }
+          },
+          "supportsStreaming": false,
+          "requiresConnection": false,
+          "blocking": true,
+          "name": "deleteClient",
+          "stereotype": {
+            "parent": {
+              "parent": {
+                "namespace": "MULE",
+                "type": "PROCESSOR"
+              },
+              "namespace": "OAUTH2-PROVIDER",
+              "type": "PROCESSOR"
+            },
+            "namespace": "OAUTH2-PROVIDER",
+            "type": "DELETE_CLIENT"
+          },
+          "nestedComponents": [],
+          "transactional": false,
+          "notifications": [],
+          "errors": ["OAUTH2-PROVIDER:NO_SUCH_CLIENT"]
+        },
+        {
+          "semanticTerms": [],
+          "visibility": "PUBLIC",
+          "kind": "operation",
+          "executionType": "CPU_LITE",
+          "description": "<p> Revokes an access token or refresh token, invalidating the related refresh token or access token as well. If client credentials need to be validated the validateClient credential should be used before. <\/p> ../../../doc/oauth2-provider-connector.xml.sample oauth2-provider:revoke-token",
+          "modelProperties": {},
+          "parameterGroupModels": [
+            {
+              "name": "General",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 1
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "the token to revoke, it can be an access token or a refresh token",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": true,
+                  "expressionSupport": "SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "token",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 1
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "The name of the configuration to be used to execute this component",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "annotations": {
+                      "classInformation": {
+                        "implementedInterfaces": [],
+                        "parent": "",
+                        "classname": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": false,
+                        "genericTypes": [],
+                        "isInterface": true,
+                        "isAbstract": true,
+                        "isMap": false
+                      },
+                      "typeId": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider"
+                    },
+                    "type": "Object",
+                    "fields": []
+                  },
+                  "required": true,
+                  "expressionSupport": "NOT_SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "config-ref",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 2
+                  },
+                  "allowedStereotypeModels": [{
+                    "parent": {
+                      "namespace": "MULE",
+                      "type": "MODULE_CONFIG"
+                    },
+                    "namespace": "OAUTH2-PROVIDER",
+                    "type": "CONFIG"
+                  }],
+                  "isComponentId": false
+                }
+              ],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            },
+            {
+              "name": "Error Mappings",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 2
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [{
+                "semanticTerms": [],
+                "role": "BEHAVIOUR",
+                "description": "Set of error mappings",
+                "modelProperties": {
+                  "org.mule.runtime.extension.api.property.InfrastructureParameterModelProperty": {"sequence": 12},
+                  "org.mule.runtime.extension.api.property.QNameModelProperty": {"value": {
+                    "localPart": "error-mappings",
+                    "prefix": "mule",
+                    "namespaceURI": "http://www.mulesoft.org/schema/mule/core"
+                  }},
+                  "sinceMuleVersion": {"version": "4.4.0"}
+                },
+                "type": {
+                  "item": {
+                    "annotations": {
+                      "infrastructureType": {},
+                      "typeId": "errorMapping"
+                    },
+                    "type": "Object",
+                    "fields": [
+                      {
+                        "model": {
+                          "format": {
+                            "validMimeTypes": ["text/plain"],
+                            "id": "text",
+                            "label": "Text"
+                          },
+                          "annotations": {
+                            "typeId": "errorTypeMatcher",
+                            "enum": {
+                              "values": [
+                                "ANY",
+                                "REDELIVERY_EXHAUSTED",
+                                "TRANSFORMATION",
+                                "EXPRESSION",
+                                "SECURITY",
+                                "CLIENT_SECURITY",
+                                "SERVER_SECURITY",
+                                "ROUTING",
+                                "CONNECTIVITY",
+                                "RETRY_EXHAUSTED",
+                                "TIMEOUT"
+                              ],
+                              "type": "[Ljava.lang.String;"
+                            }
+                          },
+                          "type": "String"
+                        },
+                        "key": {"name": "source"}
+                      },
+                      {
+                        "model": {
+                          "format": {
+                            "validMimeTypes": ["text/plain"],
+                            "id": "text",
+                            "label": "Text"
+                          },
+                          "annotations": {"typeId": "errorTypeDefinition"},
+                          "type": "String"
+                        },
+                        "key": {
+                          "name": "target",
+                          "required": "true"
+                        }
+                      }
+                    ]
+                  },
+                  "format": "java",
+                  "annotations": {
+                    "typeDsl": {
+                      "allowTopLevelDefinition": false,
+                      "allowInlineDefinition": true
+                    },
+                    "infrastructureType": {},
+                    "description": {"value": "Determines that an error thrown by this operation should be mapped to another"}
+                  },
+                  "type": "Array"
+                },
+                "required": false,
+                "expressionSupport": "NOT_SUPPORTED",
+                "fieldValueProviderModels": [],
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": true,
+                  "allowsReferences": false
+                },
+                "name": "errorMappings",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "Error Mapping",
+                  "query": false,
+                  "text": false,
+                  "order": 3
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              }],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            }
+          ],
+          "output": {
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "Void"
+            }
+          },
+          "outputAttributes": {
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "Void"
+            }
+          },
+          "supportsStreaming": false,
+          "requiresConnection": false,
+          "blocking": true,
+          "name": "revokeToken",
+          "stereotype": {
+            "parent": {
+              "parent": {
+                "namespace": "MULE",
+                "type": "PROCESSOR"
+              },
+              "namespace": "OAUTH2-PROVIDER",
+              "type": "PROCESSOR"
+            },
+            "namespace": "OAUTH2-PROVIDER",
+            "type": "REVOKE_TOKEN"
+          },
+          "nestedComponents": [],
+          "transactional": false,
+          "notifications": [],
+          "errors": ["OAUTH2-PROVIDER:INVALID_TOKEN"]
+        },
+        {
+          "semanticTerms": [],
+          "visibility": "PUBLIC",
+          "kind": "operation",
+          "executionType": "CPU_LITE",
+          "description": "<p> Checks that a valid access token is provided. <\/p> <p/> ../../../doc/oauth2-provider-connector.xml.sample oauth2-provider:validate",
+          "modelProperties": {},
+          "parameterGroupModels": [
+            {
+              "name": "General",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 1
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "defaultValue": "#[(attributes.headers['authorization'] splitBy ' ')[1]]",
+                  "description": "",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "REQUIRED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "accessToken",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 1
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "",
+                  "modelProperties": {},
+                  "type": {
+                    "item": {"type": "String"},
+                    "format": "java",
+                    "annotations": {"classInformation": {
+                      "implementedInterfaces": [],
+                      "parent": "",
+                      "classname": "java.util.Set",
+                      "hasDefaultConstructor": false,
+                      "isInstantiable": false,
+                      "isFinal": false,
+                      "genericTypes": ["java.lang.String"],
+                      "isInterface": true,
+                      "isAbstract": true,
+                      "isMap": false
+                    }},
+                    "type": "Array"
+                  },
+                  "required": false,
+                  "expressionSupport": "REQUIRED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "scopes",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 2
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "The resource owner roles to enforce when validating the token",
+                  "modelProperties": {},
+                  "type": {
+                    "item": {"type": "String"},
+                    "format": "java",
+                    "annotations": {"classInformation": {
+                      "implementedInterfaces": [],
+                      "parent": "",
+                      "classname": "java.util.Set",
+                      "hasDefaultConstructor": false,
+                      "isInstantiable": false,
+                      "isFinal": false,
+                      "genericTypes": ["java.lang.String"],
+                      "isInterface": true,
+                      "isAbstract": true,
+                      "isMap": false
+                    }},
+                    "type": "Array"
+                  },
+                  "required": false,
+                  "expressionSupport": "REQUIRED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "resourceOwnerRoles",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 3
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "The name of the configuration to be used to execute this component",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "annotations": {
+                      "classInformation": {
+                        "implementedInterfaces": [],
+                        "parent": "",
+                        "classname": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": false,
+                        "genericTypes": [],
+                        "isInterface": true,
+                        "isAbstract": true,
+                        "isMap": false
+                      },
+                      "typeId": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider"
+                    },
+                    "type": "Object",
+                    "fields": []
+                  },
+                  "required": true,
+                  "expressionSupport": "NOT_SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": true
+                  },
+                  "name": "config-ref",
+                  "layoutModel": {
+                    "password": false,
+                    "query": false,
+                    "text": false,
+                    "order": 4
+                  },
+                  "allowedStereotypeModels": [{
+                    "parent": {
+                      "namespace": "MULE",
+                      "type": "MODULE_CONFIG"
+                    },
+                    "namespace": "OAUTH2-PROVIDER",
+                    "type": "CONFIG"
+                  }],
+                  "isComponentId": false
+                }
+              ],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            },
+            {
+              "name": "Output",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 2
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [
+                {
+                  "displayModel": {"displayName": "Target Variable"},
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "description": "The name of a variable on which the operation's output will be placed",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "NOT_SUPPORTED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "target",
+                  "layoutModel": {
+                    "password": false,
+                    "tabName": "Advanced",
+                    "query": false,
+                    "text": false,
+                    "order": 5
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                },
+                {
+                  "displayModel": {"displayName": "Target Value"},
+                  "semanticTerms": [],
+                  "role": "BEHAVIOUR",
+                  "defaultValue": "#[payload]",
+                  "description": "An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable",
+                  "modelProperties": {},
+                  "type": {
+                    "format": "java",
+                    "type": "String"
+                  },
+                  "required": false,
+                  "expressionSupport": "REQUIRED",
+                  "fieldValueProviderModels": [],
+                  "hasDynamicType": false,
+                  "isConfigOverride": false,
+                  "dslConfiguration": {
+                    "allowTopLevelDefinition": false,
+                    "allowsInlineDefinition": false,
+                    "allowsReferences": false
+                  },
+                  "name": "targetValue",
+                  "layoutModel": {
+                    "password": false,
+                    "tabName": "Advanced",
+                    "query": false,
+                    "text": false,
+                    "order": 6
+                  },
+                  "allowedStereotypeModels": [],
+                  "isComponentId": false
+                }
+              ],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            },
+            {
+              "name": "Error Mappings",
+              "layoutModel": {
+                "password": false,
+                "query": false,
+                "text": false,
+                "order": 3
+              },
+              "description": "",
+              "modelProperties": {},
+              "parameters": [{
+                "semanticTerms": [],
+                "role": "BEHAVIOUR",
+                "description": "Set of error mappings",
+                "modelProperties": {
+                  "org.mule.runtime.extension.api.property.InfrastructureParameterModelProperty": {"sequence": 12},
+                  "org.mule.runtime.extension.api.property.QNameModelProperty": {"value": {
+                    "localPart": "error-mappings",
+                    "prefix": "mule",
+                    "namespaceURI": "http://www.mulesoft.org/schema/mule/core"
+                  }},
+                  "sinceMuleVersion": {"version": "4.4.0"}
+                },
+                "type": {
+                  "item": {
+                    "annotations": {
+                      "infrastructureType": {},
+                      "typeId": "errorMapping"
+                    },
+                    "type": "Object",
+                    "fields": [
+                      {
+                        "model": {
+                          "format": {
+                            "validMimeTypes": ["text/plain"],
+                            "id": "text",
+                            "label": "Text"
+                          },
+                          "annotations": {
+                            "typeId": "errorTypeMatcher",
+                            "enum": {
+                              "values": [
+                                "ANY",
+                                "REDELIVERY_EXHAUSTED",
+                                "TRANSFORMATION",
+                                "EXPRESSION",
+                                "SECURITY",
+                                "CLIENT_SECURITY",
+                                "SERVER_SECURITY",
+                                "ROUTING",
+                                "CONNECTIVITY",
+                                "RETRY_EXHAUSTED",
+                                "TIMEOUT"
+                              ],
+                              "type": "[Ljava.lang.String;"
+                            }
+                          },
+                          "type": "String"
+                        },
+                        "key": {"name": "source"}
+                      },
+                      {
+                        "model": {
+                          "format": {
+                            "validMimeTypes": ["text/plain"],
+                            "id": "text",
+                            "label": "Text"
+                          },
+                          "annotations": {"typeId": "errorTypeDefinition"},
+                          "type": "String"
+                        },
+                        "key": {
+                          "name": "target",
+                          "required": "true"
+                        }
+                      }
+                    ]
+                  },
+                  "format": "java",
+                  "annotations": {
+                    "typeDsl": {
+                      "allowTopLevelDefinition": false,
+                      "allowInlineDefinition": true
+                    },
+                    "infrastructureType": {},
+                    "description": {"value": "Determines that an error thrown by this operation should be mapped to another"}
+                  },
+                  "type": "Array"
+                },
+                "required": false,
+                "expressionSupport": "NOT_SUPPORTED",
+                "fieldValueProviderModels": [],
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": true,
+                  "allowsReferences": false
+                },
+                "name": "errorMappings",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "Error Mapping",
+                  "query": false,
+                  "text": false,
+                  "order": 7
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              }],
+              "exclusiveParametersModels": [],
+              "showInDsl": false
+            }
+          ],
+          "output": {
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "json",
+              "type": "String"
+            }
+          },
+          "outputAttributes": {
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "Void"
+            }
+          },
+          "supportsStreaming": false,
+          "requiresConnection": false,
+          "blocking": true,
+          "name": "validateToken",
+          "stereotype": {
+            "parent": {
+              "parent": {
+                "namespace": "MULE",
+                "type": "PROCESSOR"
+              },
+              "namespace": "OAUTH2-PROVIDER",
+              "type": "PROCESSOR"
+            },
+            "namespace": "OAUTH2-PROVIDER",
+            "type": "VALIDATE_TOKEN"
+          },
+          "nestedComponents": [],
+          "transactional": false,
+          "notifications": [],
+          "errors": ["OAUTH2-PROVIDER:TOKEN_UNAUTHORIZED"]
+        }
+      ],
+      "messageSources": [],
+      "name": "config",
+      "description": "OAuth2 Provider module configuration",
+      "modelProperties": {"requiredForMetadata": {"requiredParameters": [
+        "providerName",
+        "listenerConfig",
+        "clientValidationRateLimiter",
+        "clientStore",
+        "resourceOwnerSecurityProvider",
+        "clientSecurityProvider",
+        "tokenGeneratorStrategy",
+        "supportedGrantTypes",
+        "scopes",
+        "defaultScopes",
+        "tokenConfig",
+        "authorizationConfig",
+        "clients",
+        "name"
+      ]}},
+      "stereotype": {
+        "parent": {
+          "namespace": "MULE",
+          "type": "MODULE_CONFIG"
+        },
+        "namespace": "OAUTH2-PROVIDER",
+        "type": "CONFIG"
+      },
+      "parameterGroupModels": [{
+        "name": "General",
+        "layoutModel": {
+          "password": false,
+          "query": false,
+          "text": false,
+          "order": 1
+        },
+        "description": "",
+        "modelProperties": {},
+        "parameters": [
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "The provider name supplied to customers of the API.",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "providerName",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 1
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "Name of a valid listener configuration used to handle incoming requests.",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": true,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "listenerConfig",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 2
+            },
+            "allowedStereotypeModels": [{
+              "parent": {
+                "namespace": "MULE",
+                "type": "MODULE_CONFIG"
+              },
+              "namespace": "HTTP",
+              "type": "LISTENER_CONFIG"
+            }],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "The rate limiter used to control access to certain operations. If none is specified PeriodRateLimiter will be used as default.",
+            "modelProperties": {"org.mule.runtime.extension.api.property.DefaultImplementingTypeModelProperty": {"defaultType": {
+              "format": "java",
+              "type": "@ref:com.mulesoft.modules.oauth2.provider.api.ratelimit.PeriodRateLimiter"
+            }}},
+            "type": {
+              "format": "java",
+              "type": "@ref:com.mulesoft.modules.oauth2.provider.api.ratelimit.RateLimiter"
+            },
+            "required": false,
+            "expressionSupport": "SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": true,
+              "allowsReferences": true
+            },
+            "name": "clientValidationRateLimiter",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 3
+            },
+            "allowedStereotypeModels": [{
+              "namespace": "OAUTH2-PROVIDER",
+              "type": "RATE_LIMITER"
+            }],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "A store that allows retrieving client configuration information, like their secret. If no client store is provided, a default in memory object store is configured.",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "@ref:org.mule.runtime.api.store.ObjectStore"
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": true,
+              "allowsReferences": true
+            },
+            "name": "clientStore",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 4
+            },
+            "allowedStereotypeModels": [{
+              "namespace": "OS",
+              "type": "OBJECT_STORE"
+            }],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "The security provider used to authenticate resource owners. Not needed if only the CLIENT_CREDENTIALS grant type is used.",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "resourceOwnerSecurityProvider",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 5
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "The security provider used to authenticate clients. Not needed if only public clients or private clients with secrets are used",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "clientSecurityProvider",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 6
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "The strategy used to generate access tokens. Should reference a class that implements TokenGeneratorStrategy",
+            "modelProperties": {"org.mule.runtime.extension.api.property.DefaultImplementingTypeModelProperty": {"defaultType": {
+              "format": "java",
+              "annotations": {
+                "classInformation": {
+                  "implementedInterfaces": ["com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorStrategy"],
+                  "parent": "",
+                  "classname": "com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorDefaultStrategy",
+                  "hasDefaultConstructor": true,
+                  "isInstantiable": true,
+                  "isFinal": false,
+                  "genericTypes": [],
+                  "isInterface": false,
+                  "isAbstract": false,
+                  "isMap": false
+                },
+                "typeId": "com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorDefaultStrategy",
+                "typeAlias": {"value": "TokenGeneratorDefaultStrategy"}
+              },
+              "type": "Object",
+              "fields": []
+            }}},
+            "type": {
+              "format": "java",
+              "type": "@ref:com.mulesoft.modules.oauth2.provider.api.token.generator.TokenGeneratorStrategy"
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": true
+            },
+            "name": "tokenGeneratorStrategy",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 7
+            },
+            "allowedStereotypeModels": [{
+              "namespace": "OAUTH2-PROVIDER",
+              "type": "TOKEN_GENERATOR_STRATEGY"
+            }],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "defaultValue": "AUTHORIZATION_CODE",
+            "description": "The comma-separated grant types this provider will support. If none specified, only the authorization code grant type will be supported.",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "supportedGrantTypes",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 8
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "A comma-separated list of supported scopes.",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "scopes",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 9
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "A comma-separated list of the default scopes a client should have if none is defined.",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "defaultScopes",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 10
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "Information for configuring token related behaviour.",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "@ref:com.mulesoft.modules.oauth2.provider.api.token.TokenConfig"
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": true,
+              "allowsReferences": true
+            },
+            "name": "tokenConfig",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 11
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "Information for configuring authorization handling behaviour",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "@ref:com.mulesoft.modules.oauth2.provider.api.code.AuthorizationConfig"
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": true,
+              "allowsReferences": true
+            },
+            "name": "authorizationConfig",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 12
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "A list of clients.",
+            "modelProperties": {},
+            "type": {
+              "item": {"type": "@ref:com.mulesoft.modules.oauth2.provider.api.client.Client"},
+              "format": "java",
+              "annotations": {"classInformation": {
+                "implementedInterfaces": [],
+                "parent": "",
+                "classname": "java.util.List",
+                "hasDefaultConstructor": false,
+                "isInstantiable": false,
+                "isFinal": false,
+                "genericTypes": ["com.mulesoft.modules.oauth2.provider.api.client.Client"],
+                "isInterface": true,
+                "isAbstract": true,
+                "isMap": false
+              }},
+              "type": "Array"
+            },
+            "required": false,
+            "expressionSupport": "SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": true,
+              "allowsReferences": true
+            },
+            "name": "clients",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 13
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "The identifier of this element used to reference it in other components",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": true,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "name",
+            "layoutModel": {
+              "password": false,
+              "query": false,
+              "text": false,
+              "order": 15
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": true
+          },
+          {
+            "semanticTerms": [],
+            "role": "BEHAVIOUR",
+            "description": "Configures the minimum amount of time that a dynamic configuration instance can remain idle before the runtime considers it eligible for expiration. This does not mean that the platform will expire the instance at the exact moment that it becomes eligible. The runtime will actually purge the instances when it sees it fit.",
+            "modelProperties": {
+              "org.mule.runtime.extension.api.property.InfrastructureParameterModelProperty": {"sequence": 4},
+              "org.mule.runtime.extension.api.property.QNameModelProperty": {"value": {
+                "localPart": "expiration-policy",
+                "prefix": "mule",
+                "namespaceURI": "http://www.mulesoft.org/schema/mule/core"
+              }}
+            },
+            "type": {
+              "format": "java",
+              "annotations": {
+                "typeDsl": {
+                  "allowTopLevelDefinition": false,
+                  "allowInlineDefinition": true
+                },
+                "infrastructureType": {},
+                "classInformation": {
+                  "implementedInterfaces": [],
+                  "parent": "",
+                  "classname": "org.mule.runtime.extension.api.runtime.ExpirationPolicy",
+                  "hasDefaultConstructor": false,
+                  "isInstantiable": false,
+                  "isFinal": false,
+                  "genericTypes": [],
+                  "isInterface": true,
+                  "isAbstract": true,
+                  "isMap": false
+                },
+                "description": {"value": "Configures the minimum amount of time that a dynamic configuration instance can remain idle before the runtime considers it eligible for expiration. This does not mean that the platform will expire the instance at the exact moment that it becomes eligible. The runtime will actually purge the instances when it sees it fit."},
+                "typeId": "org.mule.runtime.extension.api.runtime.ExpirationPolicy"
+              },
+              "type": "Object",
+              "fields": [
+                {
+                  "annotations": {
+                    "description": {"value": "A scalar time value for the maximum amount of time a dynamic configuration instance should be allowed to be idle before it's considered eligible for expiration"},
+                    "expressionSupport": {"value": "NOT_SUPPORTED"}
+                  },
+                  "model": {
+                    "annotations": {
+                      "default": "5",
+                      "classInformation": {
+                        "implementedInterfaces": [],
+                        "parent": "java.lang.Number",
+                        "classname": "java.lang.Long",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": true,
+                        "genericTypes": [],
+                        "isInterface": false,
+                        "isAbstract": false,
+                        "isMap": false
+                      },
+                      "int": {}
+                    },
+                    "type": "Number"
+                  },
+                  "key": {"name": "maxIdleTime"}
+                },
+                {
+                  "annotations": {
+                    "description": {"value": "A time unit that qualifies the maxIdleTime attribute"},
+                    "expressionSupport": {"value": "NOT_SUPPORTED"}
+                  },
+                  "model": {
+                    "annotations": {
+                      "default": "MINUTES",
+                      "enum": {
+                        "values": [
+                          "NANOSECONDS",
+                          "MICROSECONDS",
+                          "MILLISECONDS",
+                          "SECONDS",
+                          "MINUTES",
+                          "HOURS",
+                          "DAYS"
+                        ],
+                        "type": "[Ljava.lang.String;"
+                      }
+                    },
+                    "type": "String"
+                  },
+                  "key": {"name": "timeUnit"}
+                }
+              ]
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "fieldValueProviderModels": [],
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": true,
+              "allowsReferences": false
+            },
+            "name": "expirationPolicy",
+            "layoutModel": {
+              "password": false,
+              "tabName": "Advanced",
+              "query": false,
+              "text": false,
+              "order": 14
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          }
+        ],
+        "exclusiveParametersModels": [],
+        "showInDsl": false
+      }],
+      "connectionProviders": []
+    }],
+    "artifactCoordinates": {
+      "group id": "com.mulesoft.modules",
+      "artifact id": "mule-oauth2-provider-module",
+      "version": "1.2.1"
+    },
+    "externalLibraries": [],
+    "description": "Module that provides support for Mule acting as OAuth2 provider.",
+    "resources": ["www-static/auth.html"],
+    "subTypes": [
+      {
+        "subTypes": [
+          {
+            "format": "java",
+            "type": "@ref:com.mulesoft.modules.oauth2.provider.api.token.generator.NoRefreshTokenStrategy"
+          },
+          {
+            "format": "java",
+            "type": "@ref:com.mulesoft.modules.oauth2.provider.api.token.generator.SingleRefreshTokenStrategy"
+          },
+          {
+            "format": "java",
+            "type": "@ref:com.mulesoft.modules.oauth2.provider.api.token.generator.MultipleRefreshTokensStrategy"
+          }
+        ],
+        "baseType": {
+          "format": "java",
+          "type": "@ref:com.mulesoft.modules.oauth2.provider.api.token.generator.RefreshTokenStrategy"
+        }
+      },
+      {
+        "subTypes": [{
+          "format": "java",
+          "type": "@ref:com.mulesoft.modules.oauth2.provider.api.ratelimit.PeriodRateLimiter"
+        }],
+        "baseType": {
+          "format": "java",
+          "type": "@ref:com.mulesoft.modules.oauth2.provider.api.ratelimit.RateLimiter"
+        }
+      }
+    ],
+    "modelProperties": {},
+    "constructs": [],
+    "connectionProviders": [],
+    "version": "1.2.1",
+    "privilegedArtifacts": [],
+    "importedTypes": [{
+      "format": "java",
+      "annotations": {
+        "extensibleType": {},
+        "classInformation": {
+          "implementedInterfaces": [],
+          "parent": "",
+          "classname": "org.mule.runtime.api.store.ObjectStore",
+          "hasDefaultConstructor": false,
+          "isInstantiable": false,
+          "isFinal": false,
+          "genericTypes": [],
+          "isInterface": true,
+          "isAbstract": true,
+          "isMap": false
+        },
+        "typeId": "org.mule.runtime.api.store.ObjectStore",
+        "typeAlias": {"value": "ObjectStore"}
+      },
+      "type": "Object",
+      "fields": []
+    }],
+    "xmlDsl": {
+      "schemaVersion": "1.2.1",
+      "prefix": "oauth2-provider",
+      "schemaLocation": "http://www.mulesoft.org/schema/mule/oauth2-provider/current/mule-oauth2-provider.xsd",
+      "namespace": "http://www.mulesoft.org/schema/mule/oauth2-provider",
+      "xsdFileName": "mule-oauth2-provider.xsd"
+    },
+    "operations": [],
+    "vendor": "Mulesoft",
+    "name": "OAuth2 Provider",
+    "privilegedPackages": [],
+    "category": "SELECT",
+    "notifications": [],
+    "errors": [
+      {
+        "parent": "OAUTH2-PROVIDER:OAUTH_SERVER_SECURITY",
+        "error": "OAUTH2-PROVIDER:INVALID_CONFIGURATION",
+        "handleable": true
+      },
+      {
+        "parent": "MULE:SERVER_SECURITY",
+        "error": "OAUTH2-PROVIDER:OAUTH_SERVER_SECURITY",
+        "handleable": true
+      },
+      {
+        "parent": "MULE:SECURITY",
+        "error": "MULE:SERVER_SECURITY",
+        "handleable": true
+      },
+      {
+        "parent": "MULE:ANY",
+        "error": "MULE:SECURITY",
+        "handleable": true
+      },
+      {
+        "error": "MULE:ANY",
+        "handleable": true
+      },
+      {
+        "parent": "OAUTH2-PROVIDER:OAUTH_SERVER_SECURITY",
+        "error": "OAUTH2-PROVIDER:INVALID_TOKEN",
+        "handleable": true
+      },
+      {
+        "parent": "OAUTH2-PROVIDER:OAUTH_SERVER_SECURITY",
+        "error": "OAUTH2-PROVIDER:TOKEN_UNAUTHORIZED",
+        "handleable": true
+      },
+      {
+        "parent": "MULE:ANY",
+        "error": "MULE:RETRY_EXHAUSTED",
+        "handleable": true
+      },
+      {
+        "parent": "MULE:CONNECTIVITY",
+        "error": "OAUTH2-PROVIDER:CONNECTIVITY",
+        "handleable": true
+      },
+      {
+        "parent": "MULE:ANY",
+        "error": "MULE:CONNECTIVITY",
+        "handleable": true
+      },
+      {
+        "parent": "MULE:RETRY_EXHAUSTED",
+        "error": "OAUTH2-PROVIDER:RETRY_EXHAUSTED",
+        "handleable": true
+      },
+      {
+        "parent": "OAUTH2-PROVIDER:OAUTH_SERVER_SECURITY",
+        "error": "OAUTH2-PROVIDER:INVALID_CLIENT",
+        "handleable": true
+      },
+      {
+        "parent": "OAUTH2-PROVIDER:OAUTH_SERVER_SECURITY",
+        "error": "OAUTH2-PROVIDER:NO_SUCH_CLIENT",
+        "handleable": true
+      },
+      {
+        "parent": "OAUTH2-PROVIDER:OAUTH_SERVER_SECURITY",
+        "error": "OAUTH2-PROVIDER:CLIENT_ALREADY_EXISTS",
+        "handleable": true
+      }
+    ],
+    "supportedJavaVersions": [
+      "1.8",
+      "11",
+      "17"
+    ]
+  }
+}

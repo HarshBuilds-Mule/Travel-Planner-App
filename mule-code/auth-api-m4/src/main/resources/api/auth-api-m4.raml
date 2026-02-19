@@ -1,0 +1,41 @@
+#%RAML 1.0
+title: auth-api-m4
+version: v1
+
+securitySchemes:
+  Oauth_2_0:
+    type: OAuth 2.0
+    settings:
+      authorizationGrants:
+        - client_credentials
+      accessTokenUri: https://auth-api-m4-kyt9lm.5sc6y6-1.usa-e2.cloudhub.io/token
+
+/client:
+  post:
+    headers:
+      client_id: 
+        type: string
+        required: true
+      client_secret:
+        type: string
+        required: true
+      client_name:
+        type: string
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              "Success"
+
+/validate:
+  post:
+    securedBy:
+      [Oauth_2_0]
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              "success"

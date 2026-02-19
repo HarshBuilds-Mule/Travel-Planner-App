@@ -1,0 +1,61 @@
+#%RAML 1.0
+title: sys-openmeteo-m4-api
+version: v1
+description: Api to call openmeteo in sys layer to get weather data for frontend 
+
+/meteo:
+  get:
+    description: get weather related data for showing in frontend
+    headers:
+      longitude:
+        type: number
+        required: true
+        example: -74.0060
+      latitude:
+        type: number
+        required: true
+        example: 40.7128
+    responses:
+        200:
+          description: "Successfully found the weather."
+          body:
+            application/json:
+              example: |
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                      "type": "Feature",
+                      "properties": {
+                        "name": "Eiffel Tower",
+                        "country": "France",
+                        "postcode": "75007",
+                        "city": "Paris",
+                        "lon": 2.294514,
+                        "lat": 48.858236,
+                        "formatted": "Eiffel Tower, 75007 Paris, France",
+                        "address_line1": "Eiffel Tower",
+                        "address_line2": "75007 Paris, France"
+                      },
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                          2.294514,
+                          48.858236
+                        ]
+                      }
+                    }
+                  ]
+                }
+        404:
+          description: "The requested weather could not be found."
+          body:
+            application/json:
+              example: |
+                {
+                  "error": "Not Found",
+                  "message": "No results found for the specified address."
+                }
+        
+    
+    

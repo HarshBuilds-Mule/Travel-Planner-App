@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="11f08a7d-c66c-436e-8635-a228f6229bbb" >
+		<http:listener-connection host="${http.host}" port="${http.port}" />
+	</http:listener-config>
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="33ef02fd-5713-4a94-b5a4-6ac55ec333ea" >
+		<db:my-sql-connection host="${db.host}" port="${db.port}" user="${db.user}" password="${db.password}" database="${db.database}" />
+	</db:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="c748def2-73bc-4677-ae5f-691617f365cb" file="config\global.properties" />
+	<flow name="sys-mysql-m4-apiFlow" doc:id="dac062d4-52f0-4762-ac1f-48a82e2de3c3" >
+		<http:listener doc:name="Listener" doc:id="092f73bc-284d-4ad0-958f-0e29ccd5b2e7" config-ref="HTTP_Listener_config" path="/mysql"/>
+		<db:select doc:name="Select" doc:id="db48761a-b1da-4228-9ec5-c02dfe2b94cf" config-ref="Database_Config">
+			<db:sql ><![CDATA[select * from savedmaps;]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="582f8f02-b5e8-4e7b-9bb4-754b2b61b4d6">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

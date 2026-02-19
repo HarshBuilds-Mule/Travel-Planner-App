@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:batch="http://www.mulesoft.org/schema/mule/batch"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd">
+	<http:request-config name="users-request" doc:name="HTTP Request configuration" doc:id="c314a260-723b-4b66-9b83-fca30a479ce4" >
+		<http:request-connection protocol="HTTPS" host="${https.usr.host}" port="${https.port}" />
+	</http:request-config>
+	<http:request-config name="pets-requester" doc:name="HTTP Request configuration" doc:id="1400751b-07bb-4777-a5d0-4924d31c7011" >
+		<http:request-connection protocol="HTTPS" host="${https.pets.host}" port="${https.port}" />
+	</http:request-config>
+	<vm:config name="VM_Config" doc:name="VM Config" doc:id="1f876a72-3eae-48c9-a1ea-e3e2720532ac" queues="">
+	</vm:config>
+	<sub-flow name="impl-get-mashup" doc:id="31463946-21bc-45c0-8e2b-a4d3f1006bca" >
+		<set-variable value="#[attributes.uriParams.id]" doc:name="vars.id" doc:id="8f26f9e8-fd59-4f45-ac21-5ed5ae8b526f" variableName="id"/>
+		<set-variable value="attributes.queryParams.dateFormat" doc:name="vars.dateFormat" doc:id="1d152660-56b9-4452-ab44-78065d876a38" variableName="dateFormat"/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="b8ecd21d-6dcb-44fd-8802-502f7c01a3de" >
+			<route >
+				<http:request method="GET" doc:name="Request to pets" doc:id="21c24fbb-7227-41a6-8060-d2aed6ce2110" config-ref="pets-requester" path="/pets.json"/>
+			</route>
+			<route >
+				<http:request method="GET" doc:name="Request to users" doc:id="29e6e462-5e39-42e5-ac64-16ebb90655cf" config-ref="users-request" path="/users.json"/>
+			</route>
+		</scatter-gather>
+		<ee:transform doc:name="Merging User &amp; Pet" doc:id="baf37fc2-8cd7-4413-ab7e-9ea4de8a16bd" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var user = payload."0".payload
+var pet = payload."1".payload
+---
+{
+    id: pet.id,
+    owner_name: upper(user.first_name ++ "_" ++ user.last_name),
+    pet: pet.pet,
+    breed: pet.breed,
+    country: user.country,
+    (date: now() as String {format: "yyyy/MMM/dd/HH/mm/ss/SSS"}) if (vars.dateFormat == "regular"),
+    (epoch: now() as Number) if (vars.dateFormat == "epoch")
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+	<sub-flow name="impl-post-pets-batch" doc:id="742071a0-bdf8-4efd-af76-abe19ae938f7" >
+		<async doc:name="Async" doc:id="696322a3-23cc-4718-956a-ab57ff10efb4" >
+			<batch:job jobName="implementationBatch_Job" doc:id="b7315157-4df6-42cd-a9fc-df40343790f8" >
+				<batch:process-records >
+					<batch:step name="Batch_Step" doc:id="ace14898-84be-4517-80f9-bb757c3d34d3" >
+						<vm:publish-consume queueName="validationQueue" doc:name="Publish consume" doc:id="b1905400-9b0e-40c7-be25-5ac4035d2861" config-ref="VM_Config" target="isEven" sendCorrelationId="AUTO"/>
+					</batch:step>
+				</batch:process-records>
+			</batch:job>
+		</async>
+	</sub-flow>
+</mule>

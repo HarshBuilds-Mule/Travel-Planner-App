@@ -1,0 +1,49 @@
+#%RAML 1.0
+title: sys-openroute-m4-api
+version: v1
+description: Api to call openroute service in sys layer to get route data for frontend
+
+/route:
+  get:
+    description: get route related data for showing in frontend
+    headers:
+      start:
+        type: string
+        required: false
+        example: 79.9900, 23.1800
+      end:
+        type: string
+        required: false
+        example: 79.5435, 22.0869
+      transport:
+        type: string
+        required: true
+        example: driving-car
+    responses:
+        200:
+          description: "Successfully found the route."
+          body:
+            application/json:
+              example:
+                !include examples/route.raml
+          
+        404:
+          description: "The requested location could not be found."
+          body:
+            application/json:
+              example: |
+                {
+                  "error": "Not Found",
+                  "message": "No results found for the specified address."
+                }
+        401:
+          description: "API key is invalid or missing."
+          body:
+            application/json:
+              example: |
+                {
+                  "error": "Unauthorized",
+                  "message": "Invalid API key."
+                }
+    
+    

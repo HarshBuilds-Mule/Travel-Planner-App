@@ -1,0 +1,33 @@
+#%RAML 1.0
+title: exp-frontend-m4-api
+version: v1
+description: receives the user data from frontend to send it to prc-connection-m4-api
+
+
+/trips:
+  post:
+    body:
+      application/json:
+        type: !include types/tripRequest.raml
+    responses:
+      201:
+        description: trip plan successfully created
+        body:
+          application/json:
+            type: !include types/tripResponse.raml
+      400:
+        description: Bad request- the request body is invalid or missing required fields
+        body:
+          application/json:
+            type: !include types/errorResponse.raml
+            example:
+              "message": "The 'destination' field is required."
+      500:
+        description: Internal server error - An unexpected error occured in the backend.
+        body:
+          application/json:
+            type: !include types/errorResponse.raml
+            example:
+              "message": "Failed to connect to the routing service."
+            
+              
