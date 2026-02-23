@@ -9,8 +9,12 @@
 	</section>
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.mule.tooling.ui.muleZipProjectImportWizard"/>
+		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.mule.tooling.ui.muleExportWizard"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.mule.tooling.ui.muleImportCategory"/>
+		</list>
+		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
+			<item value="org.mule.tooling.ui.muleExportCategory"/>
 		</list>
 		<section name="ImportExportWizard.dialogBounds">
 		</section>

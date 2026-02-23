@@ -5,7 +5,7 @@
   "secureProperties": [],
   "supportedJavaVersions": [],
   "redeploymentEnabled": true,
-  "name": "com.mycompany:sys-geopify-m4-api:1.0.0-SNAPSHOT",
+  "name": "com.mycompany:sys-geopify-m4-api:1.0.0",
   "minMuleVersion": "4.9.0",
   "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {

@@ -20,7 +20,7 @@
     </http:listener-config>
     <apikit:config name="exp-frontend-m4-api-config" api="exp-frontend-m4-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <http:request-config name="requester-for-prc-connection-api" doc:name="HTTP Request configuration" doc:id="87de131e-8168-4cd3-bc41-d9f49d738c6c" basePath="/api" >
-		<http:request-connection host="${http.host}" port="${port.prc}" />
+		<http:request-connection host="${host.prc}" port="${common.port}" protocol="HTTPS"/>
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="5e1f5c11-6f14-4dae-99d3-b50c39c99bd7" file="config\global.properties" />
 	<flow name="exp-frontend-m4-api-main">

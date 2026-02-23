@@ -6,17 +6,17 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
     </http:listener-config>
     <apikit:config name="prc-connection-m4-api-config" api="prc-connection-m4-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <http:request-config name="requester-for-geopify" doc:name="HTTP Request configuration" doc:id="65cec3dc-1497-4fa5-b372-cb688214137d" basePath="/api" >
-		<http:request-connection host="${http.host}" port="${port.geopify}" />
+		<http:request-connection host="${host.geopify}" port="${common.port}" protocol="HTTPS"/>
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="a47f995c-b557-4685-a562-8819d53f73ca" file="config\global.properties" />
 	<http:request-config name="requester-for-openrouteservice" doc:name="HTTP Request configuration" doc:id="bc6403a9-c8ef-4a07-a58b-a19d4a6f1a8d" basePath="/api" >
-		<http:request-connection host="${http.host}" port="${port.ors}" />
+		<http:request-connection host="${host.ors}" port="${common.port}" protocol="HTTPS"/>
 	</http:request-config>
 	<http:request-config name="requester-for-openmeteo-weatherservice" doc:name="HTTP Request configuration" doc:id="c1f37dc4-c814-47d5-80a6-733be711c768" basePath="/api" >
-		<http:request-connection host="${http.host}" port="${port.om}" />
+		<http:request-connection host="${host.om}" port="${common.port}" protocol="HTTPS"/>
 	</http:request-config>
 	<http:request-config name="HTTP_Request_config_for_ai" doc:name="HTTP Request config" doc:id="5708eab5-a001-429d-bedc-aac0156ea90d" basePath="/api">
-		<http:request-connection host="${http.host}" port="${port.ai}"/>
+		<http:request-connection host="${host.ai}" port="${common.port}" protocol="HTTPS"/>
 	</http:request-config>
 	<ee:object-store-caching-strategy name="Caching_Strategy" doc:name="Caching Strategy" doc:id="c2bc1218-4dcb-42f0-be5d-be6c0c790839" keyGenerationExpression='#[attributes.headers.start default "default"]' objectStore="AI-objectstore"/>
 	<os:object-store name="AI-objectstore" doc:name="Object store" doc:id="bd7c8ae7-0336-4df8-b454-c638fc9d3e17" maxEntries="20" entryTtl="1" entryTtlUnit="HOURS" />
